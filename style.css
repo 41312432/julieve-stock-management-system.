@@ -3,21 +3,30 @@
 }
 
 :root {
-  --main-color: #1f1f1f;
-  --secondary-color: #4a4a4a;
-  --app-container: #f1f1ff;
-  --minor-color: #00bfa5;
-  --minor-ligt: #5df2d6;
-  --minor-dark: #008e76;
+  --black: #1f1f1f;
+  --gray: #4a4a4a;
+  --app-container: #f3eada;
 
-  --link-color: #4a4a4a;
-  --link-color-hover: #c3cff4;
-  --link-color-active: #1f1f1f;
+  --main-color: #00bfa5;
+  --main-light: #5df2d6;
+  --main-dark: #008e76;
+  --main-darker: #285e72;
+
+  --minor-color: #2b4f3b;
+
+  --main-highlight: #ffa17a;
+  --main-highlight-light: #fa8e43;
+  --main-special: #a59dff;
+
+  --link-color-hover: #ffa17a;
+  --link-color-active: #2b4f3b;
   --link-color-active-bg: #fafafa;
 
   --table-color-bg: #fff;
   --table-color-double-line: #008e76;
   --table-color-item: #00bfa5;
+  --table-color-item-eve: #ffa17a;
+  --table-color-item-expired: #fa8e43;
 
   --projects-section: #fafafa;
 
@@ -69,7 +78,7 @@ a {
   padding: 8px 24px;
 }
 .header-logo {
-  color: var(--main-color);
+  color: var(--black);
   font-size: 2.5rem;
   margin: 0 16px;
 }
@@ -86,6 +95,11 @@ a {
   width: 2.5rem;
   height: 2.5rem;
   font-size: 1rem;
+  transition: 0.1s ease-in;
+}
+.header-helper-button:hover {
+  transform: scale(1.1);
+  background-color: var(--main-highlight);
 }
 /* header end */
 
@@ -111,11 +125,12 @@ a {
   color: var(--link-color);
 }
 .app-sidebar-link:hover {
+  font-size: 1.5rem;
+  font-weight: 700;
   background-color: var(--link-color-hover);
   color: var(--link-color-active);
 }
 .app-sidebar-link.active {
-  font-weight: bolder;
   font-size: 1.5rem;
   font-weight: 700;
   background-color: var(--link-color-active-bg);
@@ -138,7 +153,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--main-color);
+  color: var(--black);
 }
 .section-header p {
   font-size: 24px;
@@ -146,7 +161,7 @@ a {
   font-weight: 700;
   opacity: 0.9;
   margin: 0;
-  color: var(--main-color);
+  color: var(--black);
 }
 .section-header .date {
   font-size: 20px;
@@ -159,7 +174,7 @@ a {
   position: relative;
   flex-direction: column;
   background-color: var(--table-color-bg);
-  border: 1px solid var(--main-color);
+  border: 1px solid var(--black);
   border-radius: 5px;
 }
 .section-table {
@@ -189,12 +204,17 @@ a {
   align-items: center;
   justify-content: center;
   background-color: var(--table-color-item);
-  width: 6rem;
+  width: 7rem;
   height: 2rem;
   border-radius: 10px;
   padding: auto;
   margin: 5px;
+  transition: 0.2s ease-in;
 }
+.table-group-item:hover {
+  background-color: var(--main-special);
+}
+
 .table-fix-button {
   display: flex;
   align-items: center;
@@ -202,20 +222,30 @@ a {
   color: #fff;
   background-color: var(--button-bg);
   padding: 0;
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--gray);
   border-radius: 10px;
   margin: 10px auto;
   width: 2rem;
   height: 2rem;
   font-size: 1rem;
+  transition: 0.1s ease-in;
+}
+.table-fix-button:hover {
+  transform: scale(1.1);
+  background-color: var(--main-highlight);
 }
 
 tr,
 td {
   font-weight: 700;
-  border: 0.5px solid var(--minor-dark);
+  border: 0.5px solid var(--main-dark);
 }
 
-#exp {
-  background-color: var(--minor-dark);
+.eve {
+  background-color: var(--table-color-item-eve);
+}
+
+.expired {
+  color: red;
+  background-color: var(--table-color-item-expired);
 }
