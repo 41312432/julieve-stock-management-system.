@@ -32,8 +32,7 @@ body {
 }
 
 body {
-  font-family: "Gowun Dodum", sans-serif;
-  overflow: hidden;
+  font-family: "Nanum Gothic Coding", monospace;
   display: flex;
   justify-content: center;
   background-color: var(--app-container);
@@ -67,11 +66,11 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 16px 24px;
+  padding: 8px 24px;
 }
 .header-logo {
   color: var(--main-color);
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0 16px;
 }
 .header-helper-button {
@@ -84,8 +83,8 @@ a {
   border: 0;
   margin-right: 20px;
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   font-size: 1rem;
 }
 /* header end */
@@ -118,6 +117,7 @@ a {
 .app-sidebar-link.active {
   font-weight: bolder;
   font-size: 1.5rem;
+  font-weight: 700;
   background-color: var(--link-color-active-bg);
   color: var(--link-color-active);
 }
@@ -165,8 +165,6 @@ a {
 .section-table {
   display: table;
   border-collapse: collapse;
-  -webkit-border-horizontal-spacing: 25px;
-  -webkit-border-vertical-spacing: 25px;
   border-top-color: gray;
   text-align: center;
 }
@@ -177,6 +175,7 @@ a {
 }
 
 .table-topCategory-td {
+  font-weight: 400;
   font-size: 1.5rem;
 }
 .flex-wrap {
@@ -187,7 +186,6 @@ a {
 }
 .table-group-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--table-color-item);
@@ -214,5 +212,10 @@ a {
 
 tr,
 td {
+  font-weight: 700;
   border: 0.5px solid var(--minor-dark);
+}
+
+#exp {
+  background-color: var(--minor-dark);
 }
