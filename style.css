@@ -26,7 +26,7 @@
   --table-color-double-line: #008e76;
   --table-color-item: #00bfa5;
   --table-color-item-eve: #ffa17a;
-  --table-color-item-expired: #fa8e43;
+  --table-color-item-expired: #fa5843;
 
   --projects-section: #fafafa;
 
@@ -204,10 +204,10 @@ a {
   align-items: center;
   justify-content: center;
   background-color: var(--table-color-item);
-  width: 7rem;
+  min-width: 7rem;
   height: 2rem;
   border-radius: 10px;
-  padding: auto;
+  padding: 0 1rem;
   margin: 5px;
   transition: 0.2s ease-in;
 }
