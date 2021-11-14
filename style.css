@@ -121,6 +121,7 @@ a {
   height: 4rem;
   transition: 0.2s;
   color: var(--link-color);
+  cursor: pointer;
 }
 .app-sidebar-link:hover {
   font-size: 1.5rem;
