@@ -112,7 +112,7 @@ a {
   align-items: center;
   padding-top: 32px;
 }
-.app-sidebar-link {
+.sidebar-tab-menu {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,13 +123,13 @@ a {
   color: var(--link-color);
   cursor: pointer;
 }
-.app-sidebar-link:hover {
+.sidebar-tab-menu:hover {
   font-size: 1.5rem;
   font-weight: 700;
   background-color: var(--link-color-hover);
   color: var(--link-color-active);
 }
-.app-sidebar-link.active {
+.sidebar-tab-menu.active {
   font-size: 1.5rem;
   font-weight: 700;
   background-color: var(--link-color-active-bg);
@@ -137,7 +137,7 @@ a {
 }
 /* siedbar end */
 
-.section {
+.tab-section {
   flex: 1;
   display: none;
   flex-direction: column;
@@ -146,7 +146,7 @@ a {
   height: 100%;
   background-color: var(--projects-section);
 }
-.section.target {
+.tab-section.target {
   display: flex;
 }
 
