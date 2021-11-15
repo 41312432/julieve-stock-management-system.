@@ -23,6 +23,3 @@ function tabHandler(event) {
   tabMenu.classList.add("active");
   document.querySelector(`#section-${tabData}`).classList.add("target");
 }
-
-const item1 = new CarrotCake(3);
-console.dir(item1);
