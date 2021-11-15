@@ -1,5 +1,7 @@
 "use strict";
 
+import { CarrotCake, CheezeCake } from "./item.js";
+
 const sidebarTabMenus = document.querySelectorAll(".sidebar-tab-menu");
 const tabSections = document.querySelectorAll(".tab-section");
 
@@ -21,3 +23,6 @@ function tabHandler(event) {
   tabMenu.classList.add("active");
   document.querySelector(`#section-${tabData}`).classList.add("target");
 }
+
+const item1 = new CarrotCake(3);
+console.dir(item1);
