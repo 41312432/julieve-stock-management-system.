@@ -21,3 +21,17 @@ function tabHandler(event) {
   tabMenu.classList.add("active");
   document.querySelector(`#section-${tabData}`).classList.add("target");
 }
+
+const editButtons = document.querySelectorAll(".table-fix-button");
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".modal-overlay");
+
+editButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    modal.classList.remove("hidden");
+  });
+});
+
+overlay.addEventListener("click", (e) => {
+  modal.classList.add("hidden");
+});
