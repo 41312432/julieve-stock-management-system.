@@ -25,22 +25,16 @@ class Item {
   }
 }
 //
-class SliceCake extends Item {
-  constructor() {
+export class SliceCake extends Item {
+  constructor(itemType, amount) {
     super();
-    this.expDate = 5;
-    this.itemType = "cake";
-    this.storageType = storageType.showCased;
-    this.numPerBox = null;
-    this.nowDate = new Date();
     this.ID = this.nowDate.getTime();
-    this.createDateStr = `${this.nowDate.getMonth() + 1}월 ${this.nowDate.getDate()}일 ${this.nowDate.getHours()}시 ${this.nowDate.getMinutes()}분`;
-  }
-}
-export class CarrotCake extends SliceCake {
-  constructor(amount) {
-    super();
     this.amount = amount;
-    this.itemType = "carrotCake";
+    this.itemType = itemType;
+    this.expDate = 5;
+    this.storageType = storageType.showCased;
+    this.numPerBox = 8;
+    this.nowDate = new Date();
+    this.createDateStr = `${this.nowDate.getMonth() + 1}월 ${this.nowDate.getDate()}일 ${this.nowDate.getHours()}시 ${this.nowDate.getMinutes()}분`;
   }
 }

@@ -1,6 +1,6 @@
 "use strict";
 
-import { CarrotCake } from "./type.js";
+import { SliceCake } from "./type.js";
 import { addItemGroup } from "./item.js";
 
 const sidebarTabMenus = document.querySelectorAll(".sidebar-tab-menu");
