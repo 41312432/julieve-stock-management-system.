@@ -1,7 +1,7 @@
 "use strict";
 
-import { SliceCake } from "./type.js";
 import { addItemGroup } from "./item.js";
+import { ItemType } from "./type.js";
 
 const sidebarTabMenus = document.querySelectorAll(".sidebar-tab-menu");
 const tabSections = document.querySelectorAll(".tab-section");
@@ -38,3 +38,14 @@ editButtons.forEach((button) => {
 overlay.addEventListener("click", (e) => {
   modal.classList.add("hidden");
 });
+
+addItemGroup(ItemType.carrotCake, 3);
+addItemGroup(ItemType.carrotCake, 2);
+addItemGroup(ItemType.creamCake, 1);
+addItemGroup(ItemType.carrotCake, 3);
+addItemGroup(ItemType.cheezeCake, 3);
+addItemGroup(ItemType.cheezeCake, 3);
+
+console.dir(JSON.parse(localStorage.getItem(ItemType.carrotCake)));
+console.dir(JSON.parse(localStorage.getItem(ItemType.creamCake)));
+console.dir(JSON.parse(localStorage.getItem(ItemType.cheezeCake)));
