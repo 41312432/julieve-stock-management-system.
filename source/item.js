@@ -10,8 +10,8 @@ const storageType = Object.freeze({
 class Item {
   //interface
   constructor() {
+    this.ID = undefined;
     this.nowDate = undefined;
-    this.Time = undefined;
     this.expDate = undefined;
     this.itemType = undefined;
     this.storageType = undefined;
@@ -29,7 +29,7 @@ class SliceCake extends Item {
     this.storageType = storageType.showCased;
     this.numPerBox = null;
     this.nowDate = new Date();
-    this.Time = this.nowDate.getTime();
+    this.ID = this.nowDate.getTime();
     this.createDateStr = `${this.nowDate.getMonth() + 1}월 ${this.nowDate.getDate()}일 ${this.nowDate.getHours()}시 ${this.nowDate.getMinutes()}분`;
   }
 }
