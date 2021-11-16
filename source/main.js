@@ -25,16 +25,16 @@ function tabHandler(event) {
   document.querySelector(`#section-${tabData}`).classList.add("target");
 }
 
-const editButtons = document.querySelectorAll(".table-fix-button");
-const modal = document.querySelector(".modal");
-const overlay = document.querySelector(".modal-overlay");
+const editButtons = document.querySelectorAll(".table-edit-button");
+const edit = document.querySelector(".edit");
+const editOverlay = document.querySelector(".edit-overlay");
 
 editButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
-    modal.classList.remove("hidden");
+    edit.classList.remove("hidden");
   });
 });
 
-overlay.addEventListener("click", (e) => {
-  modal.classList.add("hidden");
+editOverlay.addEventListener("click", (e) => {
+  edit.classList.add("hidden");
 });

@@ -222,7 +222,7 @@ td {
   background-color: var(--main-special);
 }
 
-.table-fix-button {
+.table-edit-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,7 +237,7 @@ td {
   font-size: 1rem;
   transition: transform 0.1s ease-in;
 }
-.table-fix-button:hover {
+.table-edit-button:hover {
   border: none;
   transform: scale(1.1);
   background-color: var(--main-highlight);
@@ -254,7 +254,7 @@ td {
 /*section table end*/
 
 /*modal*/
-.modal {
+.edit {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -266,13 +266,13 @@ td {
   height: 100%;
 }
 
-.modal-overlay {
+.edit-overlay {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
 }
-.modal-content {
+.edit-content {
   display: flex;
   flex-direction: column;
   background-color: var(--white);
@@ -285,62 +285,62 @@ td {
   border-radius: 10px;
 }
 
-.modal-heading {
+.edit-heading {
   margin: 0;
 }
 
-.modal-section {
+.edit-section {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid black;
 }
-.modal-section-info {
+.edit-section-info {
   display: flex;
   height: 50%;
   width: 100%;
   border: 1px solid black;
 }
-.modal-section-info > div {
+.edit-section-info > div {
   width: 50%;
   border: 1px solid black;
 }
-.modal-section-info-name {
+.edit-section-info-name {
   text-align: center;
   font-size: 3rem;
 }
-.modal-section-info-status {
+.edit-section-info-status {
   padding-left: 5%;
 }
-.modal-section-control {
+.edit-section-control {
   display: flex;
   height: 50%;
   width: 100%;
   border: 1px solid black;
 }
-.modal-section-control > div {
+.edit-section-control > div {
   border: 1px solid black;
 }
-.modal-section-control-number,
-.modal-section-control-adjust {
+.edit-section-control-number,
+.edit-section-control-adjust {
   flex: 1;
 }
-.modal-section-control-button {
+.edit-section-control-button {
   flex: 2;
 }
-.modal-section-control-number > p {
+.edit-section-control-number > p {
   text-align: center;
   font-size: 3rem;
 }
-.modal-section-control-adjust,
-.modal-section-control-button {
+.edit-section-control-adjust,
+.edit-section-control-button {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.modal-section-control-adjust > button,
-.modal-section-control-button > button {
+.edit-section-control-adjust > button,
+.edit-section-control-button > button {
   width: auto;
   height: 50%;
   margin: 5px;

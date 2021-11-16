@@ -4,6 +4,7 @@ export const ItemType = Object.freeze({
   creamCake: "creamCake",
   carrotCake: "carrotCake",
   cheezeCake: "cheezeCake",
+  strawberryCake: "strawberryCake",
 });
 
 export const storageType = Object.freeze({
