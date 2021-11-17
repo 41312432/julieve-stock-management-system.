@@ -1,7 +1,7 @@
 "use strict";
 
 import { Editor } from "./editor.js";
-import { addItemGroupToLocalStorage, drawItemGroupFromLocalStorage } from "./item.js";
+import { addItemGroupToLocalStorage, drawItemGroupFromLocalStorage, getNowStaged } from "./item.js";
 import { Table } from "./table.js";
 import { ItemType } from "./type.js";
 
@@ -32,3 +32,4 @@ const table = new Table();
 addItemGroupToLocalStorage(ItemType.cheezeCake, 4);
 
 console.dir(table.editor);
+console.dir(getNowStaged(ItemType.cheezeCake));

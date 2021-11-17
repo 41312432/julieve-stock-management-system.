@@ -59,3 +59,11 @@ function makeItemGroupElement(itemGroup) {
 export function getLocalItemGroupArray(itemType) {
   return localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
 }
+
+export function getNowStaged(itemType) {
+  const nowStock = [];
+  getLocalItemGroupArray(itemType).forEach((item) => {
+    nowStock.push(item.amount);
+  });
+  return nowStock.join(" / ");
+}

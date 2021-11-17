@@ -1,6 +1,6 @@
 "use strict";
 
-import { getLocalItemGroupArray } from "./item.js";
+import { getLocalItemGroupArray, getNowStaged } from "./item.js";
 import { getItemPropertyByType, getLargeItemType, getRealItemName } from "./type.js";
 
 export class Editor {
@@ -13,8 +13,8 @@ export class Editor {
       name: undefined,
       expDate: undefined,
       numPerBox: undefined,
-      nowStock: undefined,
       storageType: undefined,
+      nowStaged: undefined,
     };
 
     this.infoName = document.querySelector(".editor-section-info-name");
@@ -30,7 +30,7 @@ export class Editor {
     this.property.expDate = getItemPropertyByType(itemType).expDate;
     this.property.numPerBox = getItemPropertyByType(itemType).numPerBox;
     this.property.storageType = getItemPropertyByType(itemType).storageType;
-    this.property.nowStock = getLocalItemGroupArray(itemType).length;
+    this.property.nowStaged = getNowStaged(itemType);
   };
 
   drawBasicProperties() {
@@ -38,7 +38,7 @@ export class Editor {
     this.infoStatus.innerHTML = `
     <p>유통기한 : ${this.property.expDate}</p>
     <p>박스당 개수 : ${this.property.numPerBox}</p>
-    <p>재고 : 2 / 3 / 3</p>
+    <p>재고 : ${this.property.nowStaged}</p>
     <p>창고 : 2박스+14개</p>`;
   }
 }
