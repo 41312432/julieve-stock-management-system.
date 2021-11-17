@@ -41,3 +41,18 @@ export class SliceCake extends Item {
     this.createDateStr = `${this.nowDate.getMonth() + 1}월 ${this.nowDate.getDate()}일 ${this.nowDate.getHours()}시 ${this.nowDate.getMinutes()}분`;
   }
 }
+
+export function getRealItemName(itemType) {
+  switch (itemType) {
+    case itemType.creamCake:
+      return "생크림 케이크";
+    case itemType.carrotCake:
+      return "당근 케이크";
+    case itemType.cheezeCake:
+      return "바스크 치즈 케이크";
+    case itemType.strawberryCake:
+      return "딸기 케이크";
+    default:
+      return "NONE";
+  }
+}

@@ -254,7 +254,7 @@ td {
 /*section table end*/
 
 /*modal*/
-.edit {
+.editor-container {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -266,13 +266,13 @@ td {
   height: 100%;
 }
 
-.edit-overlay {
+.editor-overlay {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
 }
-.edit-content {
+.editor-content {
   display: flex;
   flex-direction: column;
   background-color: var(--white);
@@ -285,62 +285,62 @@ td {
   border-radius: 10px;
 }
 
-.edit-heading {
+.editor-heading {
   margin: 0;
 }
 
-.edit-section {
+.editor-section {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid black;
 }
-.edit-section-info {
+.editor-section-info {
   display: flex;
   height: 50%;
   width: 100%;
   border: 1px solid black;
 }
-.edit-section-info > div {
+.editor-section-info > div {
   width: 50%;
   border: 1px solid black;
 }
-.edit-section-info-name {
+.editor-section-info-name {
   text-align: center;
   font-size: 3rem;
 }
-.edit-section-info-status {
+.editor-section-info-status {
   padding-left: 5%;
 }
-.edit-section-control {
+.editor-section-control {
   display: flex;
   height: 50%;
   width: 100%;
   border: 1px solid black;
 }
-.edit-section-control > div {
+.editor-section-control > div {
   border: 1px solid black;
 }
-.edit-section-control-number,
-.edit-section-control-adjust {
+.editor-section-control-number,
+.editor-section-control-adjust {
   flex: 1;
 }
-.edit-section-control-button {
+.editor-section-control-button {
   flex: 2;
 }
-.edit-section-control-number > p {
+.editor-section-control-number > p {
   text-align: center;
   font-size: 3rem;
 }
-.edit-section-control-adjust,
-.edit-section-control-button {
+.editor-section-control-adjust,
+.editor-section-control-button {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.edit-section-control-adjust > button,
-.edit-section-control-button > button {
+.editor-section-control-adjust > button,
+.editor-section-control-button > button {
   width: auto;
   height: 50%;
   margin: 5px;
