@@ -1,5 +1,6 @@
 "use strict";
 
+import { Edit } from "./edit.js";
 import { addItemGroupToLocalStorage, drawItemGroupFromLocalStorage } from "./item.js";
 import { ItemType } from "./type.js";
 
@@ -25,16 +26,4 @@ function tabHandler(event) {
   document.querySelector(`#section-${tabData}`).classList.add("target");
 }
 
-const editButtons = document.querySelectorAll(".table-edit-button");
-const edit = document.querySelector(".edit");
-const editOverlay = document.querySelector(".edit-overlay");
-
-editButtons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    edit.classList.remove("hidden");
-  });
-});
-
-editOverlay.addEventListener("click", (e) => {
-  edit.classList.add("hidden");
-});
+new Edit();
