@@ -1,17 +1,34 @@
 "use strict";
 
-import { ItemType, SliceCake } from "./type.js";
+import { getItemPropertyByType, getLargeItemType, ItemType } from "./type.js";
 
 const todayDate = new Date().getDate();
 
+class Item {
+  property = {
+    expDate: undefined,
+    numPerBox: undefined,
+    storageType: undefined,
+  };
+
+  constructor(itemType, amount) {
+    this.nowDate = new Date();
+    this.ID = this.nowDate.getTime();
+    this.itemType = itemType;
+    this.amount = amount;
+    this.property = getItemPropertyByType(itemType);
+  }
+
+  setProperty(_property) {
+    this.property = _property;
+  }
+}
+
 export function addItemGroupToLocalStorage(itemType, amount) {
-  switch (itemType) {
-    case ItemType.creamCake:
-    case ItemType.cheezeCake:
-    case ItemType.carrotCake:
-    case ItemType.strawberryCake:
-      const temp = localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
-      temp.push(new SliceCake(itemType, amount));
+  switch (getLargeItemType(itemType)) {
+    case ItemType.sliceCake:
+      const temp = getLocalItemGroupArray(itemType);
+      temp.push(new Item(itemType, amount));
       localStorage.removeItem(itemType);
       localStorage.setItem(itemType, JSON.stringify(temp));
       break;
@@ -20,9 +37,7 @@ export function addItemGroupToLocalStorage(itemType, amount) {
 
 export function drawItemGroupFromLocalStorage(itemType) {
   const itemGroupRow = document.querySelector(`#${itemType} .item-flex-wrap`);
-  const temp = localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
-  console.dir(temp);
-  temp.forEach((itemGroup) => {
+  getLocalItemGroupArray(itemType).forEach((itemGroup) => {
     itemGroupRow.appendChild(makeItemGroupElement(itemGroup));
   });
 }
@@ -39,4 +54,8 @@ function makeItemGroupElement(itemGroup) {
     itemGroupElement.innerText += "🍰 ";
   }
   return itemGroupElement;
+}
+
+export function getLocalItemGroupArray(itemType) {
+  return localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
 }
