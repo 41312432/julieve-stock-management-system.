@@ -57,11 +57,7 @@
                   <td rowspan="4" class="table-topCategory-td">케이크</td>
                   <td>생크림</td>
                   <td>
-                    <div class="item-flex-wrap">
-                      <div class="table-group-item eve">🍰 🍰 🍰</div>
-                      <div class="table-group-item">🍰 🍰</div>
-                      <div class="table-group-item">🍰 🍰</div>
-                    </div>
+                    <div class="item-flex-wrap"></div>
                   </td>
                   <td>32</td>
                   <td>
@@ -85,11 +81,7 @@
                 <tr id="carrotCake">
                   <td>당근</td>
                   <td>
-                    <div class="item-flex-wrap">
-                      <div class="table-group-item expired">🍰</div>
-                      <div class="table-group-item eve">🍰 🍰</div>
-                      <div class="table-group-item">🍰 🍰</div>
-                    </div>
+                    <div class="item-flex-wrap"></div>
                   </td>
                   <td>32</td>
                   <td>
@@ -101,9 +93,7 @@
                 <tr id="strawberryCake">
                   <td>딸기</td>
                   <td>
-                    <div class="item-flex-wrap">
-                      <div class="table-group-item">🍰</div>
-                    </div>
+                    <div class="item-flex-wrap"></div>
                   </td>
                   <td>32</td>
                   <td>
@@ -704,19 +694,19 @@
                 <p>창고 : 2박스+14개</p>
               </div>
             </div>
-            <div class="editor-section-control">
+            <form class="editor-section-form">
               <div class="editor-section-number">
-                <div type="number" id="conrol-nubmer" value="0"></div>
+                <input type="number" id="control-number" value="0" min="0" ></input>
               </div>
               <div class="editor-section-control-number">
-                <button class="number-control-button">+</button>
-                <button class="number-control-button">-</button>
+                <button class="number-control-button" id="increase"><i class="fas fa-angle-up"></i></button>
+                <button class="number-control-button" id="decrease"><i class="fas fa-angle-down"></i></button>
               </div>
               <div class="editor-section-control-stock">
-                <button class="add">재고 꺼내기</button>
-                <button class="sub">재고 없애기</button>
+                <button class="stock-control-button" id="add">재고 꺼내기</button>
+                <button class="stock-control-button" id="sub">재고 없애기</button>
               </div>
-            </div>
+            </form>
           </section>
         </div>
       </div>

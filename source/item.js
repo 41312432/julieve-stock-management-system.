@@ -35,9 +35,7 @@ export function addItemGroupToLocalStorage(itemType, amount) {
 
 export function drawItemGroupFromLocalStorage(itemType) {
   const itemGroupRow = document.querySelector(`#${itemType} .item-flex-wrap`);
-  (itemGroupRow) => {
-    itemGroupRow.innerHTML = "";
-  };
+  cleanInnerHTML(itemGroupRow);
   getLocalItemGroupArray(itemType).forEach((itemGroup) => {
     itemGroupRow.appendChild(makeItemGroupElement(itemGroup));
   });
@@ -74,4 +72,10 @@ export function getNowStaged(itemType) {
     nowStock.push(item.amount);
   });
   return nowStock.join(" / ");
+}
+
+function cleanInnerHTML(element) {
+  if (element) {
+    element.innerHTML = "";
+  }
 }

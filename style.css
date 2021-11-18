@@ -308,18 +308,18 @@ td {
 }
 .editor-section-info-name {
   text-align: center;
-  font-size: 3rem;
+  font-size: 3em;
 }
 .editor-section-info-status {
   padding-left: 5%;
 }
-.editor-section-control {
+.editor-section-form {
   display: flex;
   height: 50%;
   width: 100%;
   border: 1px solid black;
 }
-.editor-section-control > div {
+.editor-section-form > div {
   border: 1px solid black;
 }
 .editor-section-number,
@@ -329,21 +329,57 @@ td {
 .editor-section-control-stock {
   flex: 2;
 }
-.editor-section-number > p {
-  text-align: center;
-  font-size: 3rem;
-}
 .editor-section-control-number,
 .editor-section-control-stock {
   display: flex;
+  width: 50%;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
-.editor-section-control-number > button,
-.editor-section-control-stock > button {
-  width: auto;
-  height: 50%;
+
+.editor-section-number > input {
+  all: unset;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 2em;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.number-control-button {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--main-dark);
+  border-radius: 10px;
   margin: 5px;
+  width: 60%;
+  height: 45%;
+  font-size: 4em;
+  background: var(--main-color);
+}
+.stock-control-button {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--main-highlight);
+  border-radius: 10px;
+  margin: 5px;
+  width: 80%;
+  height: 45%;
+  font-size: 3em;
+  background: var(--main-color);
 }
 
 .hidden {

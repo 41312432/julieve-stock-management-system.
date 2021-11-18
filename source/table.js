@@ -15,7 +15,6 @@ export class Table {
 
   openEditor = (event) => {
     const clickItemType = event.target.closest("tr").getAttribute("id");
-    console.log("clickItemType", clickItemType);
     this.editor.setBasicProperties(clickItemType);
     this.editor.drawBasicProperties();
     this.editor.container.classList.remove("hidden");

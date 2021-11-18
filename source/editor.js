@@ -1,15 +1,15 @@
 "use strict";
 
-import { getLocalItemGroupArray, getNowStaged } from "./item.js";
+import { addItemGroupToLocalStorage, drawItemGroupFromLocalStorage, getLocalItemGroupArray, getNowStaged } from "./item.js";
 import { getItemPropertyByType, getLargeItemType, getRealItemName } from "./type.js";
 
 export class Editor {
   constructor() {
+    this.itemType = undefined;
+
     this.container = document.querySelector(".editor-container");
     this.overlay = document.querySelector(".editor-overlay");
     this.overlay.addEventListener("click", this.hideEditor);
-
-    this.numer = document.querySelector(".editor-section-control-number > p");
 
     this.property = {
       name: undefined,
@@ -21,6 +21,27 @@ export class Editor {
 
     this.infoName = document.querySelector(".editor-section-info-name");
     this.infoStatus = document.querySelector(".editor-section-info-status");
+
+    this.form = document.querySelector(".editor-section-form");
+    this.controlNumber = document.querySelector("#control-number");
+    this.increaseButton = document.querySelector("#increase");
+    this.decreaseButton = document.querySelector("#decrease");
+
+    this.form.addEventListener("submit", (event) => {
+      event.preventDefault();
+    });
+    this.increaseButton.addEventListener("click", () => {
+      this.controlNumber.value = parseInt(this.controlNumber.value) + 1;
+    });
+    this.decreaseButton.addEventListener("click", () => {
+      this.controlNumber.value = parseInt(this.controlNumber.value) - 1;
+    });
+
+    this.addStockButton = document.querySelector("#add");
+    this.subStockButton = document.querySelector("#sub");
+
+    this.addStockButton.addEventListener("click", this.addStock);
+    this.addStockButton.addEventListener("click", this.hideEditor);
   }
 
   hideEditor = () => {
@@ -28,6 +49,7 @@ export class Editor {
   };
 
   setBasicProperties = (itemType) => {
+    this.itemType = itemType;
     this.property.name = getRealItemName(itemType);
     this.property.expDate = getItemPropertyByType(itemType).expDate;
     this.property.numPerBox = getItemPropertyByType(itemType).numPerBox;
@@ -43,4 +65,9 @@ export class Editor {
     <p>재고 : ${this.property.nowStaged}</p>
     <p>창고 : 2박스+14개</p>`;
   }
+
+  addStock = () => {
+    addItemGroupToLocalStorage(this.itemType, this.controlNumber.value);
+    drawItemGroupFromLocalStorage(this.itemType);
+  };
 }
