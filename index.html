@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet" />
-    <script defer src="./source/main.js"></script>
+    <script type="module" defer src="./source/main.js"></script>
   </head>
   <body>
     <div class="container">
@@ -53,64 +53,51 @@
               </thead>
               <tbody class="setcion-table-body">
                 <!---->
-                <tr>
+                <tr id="creamCake">
                   <td rowspan="4" class="table-topCategory-td">케이크</td>
                   <td>생크림</td>
                   <td>
-                    <div class="item-flex-wrap">
-                      <div class="table-group-item eve">🍰 🍰 🍰</div>
-                      <div class="table-group-item">🍰 🍰</div>
-                      <div class="table-group-item">🍰 🍰</div>
-                    </div>
+                    <div class="item-flex-wrap"></div>
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr id="cheezeCake">
                   <td>바스크</td>
                   <td>
-                    <div class="item-flex-wrap">
-                      <div class="table-group-item">🍰 🍰</div>
-                      <div class="table-group-item">🍰 🍰</div>
-                    </div>
+                    <div class="item-flex-wrap"></div>
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
                 </tr>
-                <tr>
+                <tr id="carrotCake">
                   <td>당근</td>
                   <td>
-                    <div class="item-flex-wrap">
-                      <div class="table-group-item expired">🍰</div>
-                      <div class="table-group-item eve">🍰 🍰</div>
-                      <div class="table-group-item">🍰 🍰</div>
-                    </div>
+                    <div class="item-flex-wrap"></div>
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
                 </tr>
-                <tr>
-                  <td>망고</td>
+                <tr id="strawberryCake">
+                  <td>딸기</td>
                   <td>
-                    <div class="item-flex-wrap">
-                      <div class="table-group-item">🍰</div>
-                    </div>
+                    <div class="item-flex-wrap"></div>
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -129,7 +116,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -144,7 +131,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -159,7 +146,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -175,7 +162,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -189,7 +176,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -198,11 +185,10 @@
             </table>
           </div>
         </section>
-        <!--Section-->
         <section class="tab-section" id="section-fridge">
           <!--section-header-->
           <div class="section-header">
-            <p>쇼케이스</p>
+            <p>냉장보관</p>
             <p class="date">2021년 11월 14일 (토)</p>
           </div>
           <!--section-table-->
@@ -229,7 +215,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -244,7 +230,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -260,7 +246,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -274,7 +260,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -293,7 +279,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -308,7 +294,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -323,7 +309,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -339,7 +325,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -353,7 +339,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -366,7 +352,7 @@
         <section class="tab-section" id="section-freezer">
           <!--section-header-->
           <div class="section-header">
-            <p>쇼케이스</p>
+            <p>냉동보관</p>
             <p class="date">2021년 11월 14일 (토)</p>
           </div>
           <!--section-table-->
@@ -393,7 +379,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -408,7 +394,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -424,7 +410,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -438,7 +424,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -457,7 +443,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -472,7 +458,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -487,7 +473,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -503,7 +489,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -517,7 +503,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -530,7 +516,7 @@
         <section class="tab-section" id="section-storage">
           <!--section-header-->
           <div class="section-header">
-            <p>쇼케이스</p>
+            <p>창고</p>
             <p class="date">2021년 11월 14일 (토)</p>
           </div>
           <!--section-table-->
@@ -557,7 +543,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -572,7 +558,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -588,7 +574,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -602,7 +588,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -621,7 +607,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -636,7 +622,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -651,7 +637,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -667,7 +653,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -681,7 +667,7 @@
                   </td>
                   <td>32</td>
                   <td>
-                    <button class="table-fix-button">
+                    <button class="table-edit-button">
                       <i class="fas fa-pen"></i>
                     </button>
                   </td>
@@ -690,6 +676,39 @@
             </table>
           </div>
         </section>
+      </div>
+      <!--Edit-->
+      <div class="editor-container hidden">
+        <div class="editor-overlay"></div>
+        <div class="editor-content">
+          <h1 class="editor-heading">재고 수정</h1>
+          <section class="editor-section">
+            <div class="editor-section-info">
+              <div class="editor-section-info-name">
+                <p>생크림 케이크</p>
+              </div>
+              <div class="editor-section-info-status">
+                <p>유통기한 : 5일</p>
+                <p>박스당 개수 : 22개</p>
+                <p>재고 : 2 / 3 / 3</p>
+                <p>창고 : 2박스+14개</p>
+              </div>
+            </div>
+            <form class="editor-section-form">
+              <div class="editor-section-number">
+                <input type="number" id="control-number" value="0" min="0" ></input>
+              </div>
+              <div class="editor-section-control-number">
+                <button class="number-control-button" id="increase"><i class="fas fa-angle-up"></i></button>
+                <button class="number-control-button" id="decrease"><i class="fas fa-angle-down"></i></button>
+              </div>
+              <div class="editor-section-control-stock">
+                <button class="stock-control-button" id="add">재고 꺼내기</button>
+                <button class="stock-control-button" id="sub">재고 없애기</button>
+              </div>
+            </form>
+          </section>
+        </div>
       </div>
     </div>
   </body>

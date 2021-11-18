@@ -1,5 +1,10 @@
 "use strict";
 
+import { Editor } from "./editor.js";
+import { addItemGroupToLocalStorage, drawItemGroupFromLocalStorage, getNowStaged } from "./item.js";
+import { Table } from "./table.js";
+import { ItemType } from "./type.js";
+
 const sidebarTabMenus = document.querySelectorAll(".sidebar-tab-menu");
 const tabSections = document.querySelectorAll(".tab-section");
 
@@ -21,3 +26,5 @@ function tabHandler(event) {
   tabMenu.classList.add("active");
   document.querySelector(`#section-${tabData}`).classList.add("target");
 }
+
+const table = new Table();

@@ -1,42 +1,81 @@
 "use strict";
 
-const storageType = Object.freeze({
-  frozen: "frozen",
-  refridgereted: "refridgerated",
-  roomTemperatured: "roomTemperatured",
-  showCased: "showCased",
-});
+import { getItemPropertyByType, getLargeItemType, ItemType } from "./type.js";
 
 class Item {
-  //interface
-  constructor() {
-    this.nowDate = undefined;
-    this.Time = undefined;
-    this.expDate = undefined;
-    this.itemType = undefined;
-    this.storageType = undefined;
-    this.numPerBox = undefined;
-    this.amount = undefined;
-    this.createDateStr = undefined;
-  }
-}
-//
-class SliceCake extends Item {
-  constructor() {
-    super();
-    this.expDate = 5;
-    this.itemType = "cake";
-    this.storageType = storageType.showCased;
-    this.numPerBox = null;
-    this.nowDate = new Date();
-    this.Time = this.nowDate.getTime();
-    this.createDateStr = `${this.nowDate.getMonth() + 1}월 ${this.nowDate.getDate()}일 ${this.nowDate.getHours()}시 ${this.nowDate.getMinutes()}분`;
-  }
-}
-export class CarrotCake extends SliceCake {
-  constructor(amount) {
-    super();
+  property = {
+    expDate: undefined,
+    numPerBox: undefined,
+    storageType: undefined,
+  };
+
+  constructor(itemType, amount) {
+    this.now = new Date();
+    this.time = this.now.getTime();
+    this.itemType = itemType;
     this.amount = amount;
-    this.itemType = "carrotCake";
+    this.property = getItemPropertyByType(itemType);
+  }
+
+  setProperty(_property) {
+    this.property = _property;
+  }
+}
+
+export function addItemGroupToLocalStorage(itemType, amount) {
+  switch (getLargeItemType(itemType)) {
+    case ItemType.sliceCake:
+      const temp = getLocalItemGroupArray(itemType);
+      temp.push(new Item(itemType, amount));
+      localStorage.removeItem(itemType);
+      localStorage.setItem(itemType, JSON.stringify(temp));
+      break;
+  }
+}
+
+export function drawItemGroupFromLocalStorage(itemType) {
+  const itemGroupRow = document.querySelector(`#${itemType} .item-flex-wrap`);
+  cleanInnerHTML(itemGroupRow);
+  getLocalItemGroupArray(itemType).forEach((itemGroup) => {
+    itemGroupRow.appendChild(makeItemGroupElement(itemGroup));
+  });
+}
+
+function makeItemGroupElement(itemGroup) {
+  const itemGroupElement = document.createElement("div");
+  itemGroupElement.classList.add("table-group-item");
+  giveExpClass(itemGroupElement, itemGroup);
+  for (let i = 0; i < itemGroup.amount; i++) {
+    itemGroupElement.innerText += "🍰 ";
+  }
+  return itemGroupElement;
+}
+
+function giveExpClass(element, itemGroup) {
+  const today = new Date();
+  const dateDiff = Math.ceil((today.getTime() - itemGroup.time) / (1000 * 3600 * 24)) - 1;
+
+  if (dateDiff === itemGroup.property.expDate) {
+    element.classList.add("eve");
+  } else if (dateDiff > itemGroup.property.expDate) {
+    element.classList.add("expired");
+  }
+}
+
+export function getLocalItemGroupArray(itemType) {
+  return localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
+}
+
+export function getNowStaged(itemType) {
+  const nowStock = [];
+  getLocalItemGroupArray(itemType).forEach((item) => {
+    nowStock.push(item.amount);
+  });
+  return nowStock.join(" / ");
+}
+
+function cleanInnerHTML(element) {
+  if (element) {
+    element.innerHTML = "";
   }
 }
