@@ -2,8 +2,6 @@
 
 import { getItemPropertyByType, getLargeItemType, ItemType } from "./type.js";
 
-const todayDate = new Date().getDate();
-
 class Item {
   property = {
     expDate: undefined,
@@ -12,8 +10,8 @@ class Item {
   };
 
   constructor(itemType, amount) {
-    this.nowDate = new Date();
-    this.ID = this.nowDate.getTime();
+    this.now = new Date();
+    this.time = this.now.getTime();
     this.itemType = itemType;
     this.amount = amount;
     this.property = getItemPropertyByType(itemType);
@@ -37,6 +35,9 @@ export function addItemGroupToLocalStorage(itemType, amount) {
 
 export function drawItemGroupFromLocalStorage(itemType) {
   const itemGroupRow = document.querySelector(`#${itemType} .item-flex-wrap`);
+  (itemGroupRow) => {
+    itemGroupRow.innerHTML = "";
+  };
   getLocalItemGroupArray(itemType).forEach((itemGroup) => {
     itemGroupRow.appendChild(makeItemGroupElement(itemGroup));
   });
@@ -45,15 +46,22 @@ export function drawItemGroupFromLocalStorage(itemType) {
 function makeItemGroupElement(itemGroup) {
   const itemGroupElement = document.createElement("div");
   itemGroupElement.classList.add("table-group-item");
-  if (todayDate - itemGroup.getDate() === 1) {
-    itemGroupElement.classList.add("eve");
-  } else if (todayDate - itemGroup.getDate() < 1) {
-    itemGroupElement.classList.add("expired");
-  }
+  giveExpClass(itemGroupElement, itemGroup);
   for (let i = 0; i < itemGroup.amount; i++) {
     itemGroupElement.innerText += "🍰 ";
   }
   return itemGroupElement;
+}
+
+function giveExpClass(element, itemGroup) {
+  const today = new Date();
+  const dateDiff = Math.ceil((today.getTime() - itemGroup.time) / (1000 * 3600 * 24)) - 1;
+
+  if (dateDiff === itemGroup.property.expDate) {
+    element.classList.add("eve");
+  } else if (dateDiff > itemGroup.property.expDate) {
+    element.classList.add("expired");
+  }
 }
 
 export function getLocalItemGroupArray(itemType) {

@@ -322,25 +322,25 @@ td {
 .editor-section-control > div {
   border: 1px solid black;
 }
-.editor-section-control-number,
-.editor-section-control-adjust {
+.editor-section-number,
+.editor-section-control-number {
   flex: 1;
 }
-.editor-section-control-button {
+.editor-section-control-stock {
   flex: 2;
 }
-.editor-section-control-number > p {
+.editor-section-number > p {
   text-align: center;
   font-size: 3rem;
 }
-.editor-section-control-adjust,
-.editor-section-control-button {
+.editor-section-control-number,
+.editor-section-control-stock {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.editor-section-control-adjust > button,
-.editor-section-control-button > button {
+.editor-section-control-number > button,
+.editor-section-control-stock > button {
   width: auto;
   height: 50%;
   margin: 5px;

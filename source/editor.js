@@ -9,6 +9,8 @@ export class Editor {
     this.overlay = document.querySelector(".editor-overlay");
     this.overlay.addEventListener("click", this.hideEditor);
 
+    this.numer = document.querySelector(".editor-section-control-number > p");
+
     this.property = {
       name: undefined,
       expDate: undefined,

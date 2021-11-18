@@ -28,8 +28,3 @@ function tabHandler(event) {
 }
 
 const table = new Table();
-
-addItemGroupToLocalStorage(ItemType.cheezeCake, 4);
-
-console.dir(table.editor);
-console.dir(getNowStaged(ItemType.cheezeCake));
