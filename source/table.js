@@ -1,5 +1,5 @@
 import { Editor } from "./editor.js";
-import { drawItemGroupFromLocalStorage, getLocalItemGroupArray } from "./item.js";
+import { drawItemGroupRow } from "./item.js";
 import { ItemType } from "./type.js";
 
 export class Table {
@@ -10,7 +10,7 @@ export class Table {
       button.addEventListener("click", this.openEditor);
     });
 
-    Object.keys(ItemType).forEach((itemType) => drawItemGroupFromLocalStorage(itemType));
+    Object.keys(ItemType).forEach((itemType) => drawItemGroupRow(itemType));
   }
 
   openEditor = (event) => {

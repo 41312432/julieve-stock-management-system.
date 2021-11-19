@@ -1,6 +1,6 @@
 "use strict";
 
-import { getItemPropertyByType, getLargeItemType, ItemType } from "./type.js";
+import { getItemProperty, getItemTypeIcon, getLargeItemType, ItemType } from "./type.js";
 
 class Item {
   property = {
@@ -14,7 +14,7 @@ class Item {
     this.time = this.now.getTime();
     this.itemType = itemType;
     this.amount = amount;
-    this.property = getItemPropertyByType(itemType);
+    this.property = getItemProperty(itemType);
   }
 
   setProperty(_property) {
@@ -23,20 +23,16 @@ class Item {
 }
 
 export function addItemGroupToLocalStorage(itemType, amount) {
-  switch (getLargeItemType(itemType)) {
-    case ItemType.sliceCake:
-      const temp = getLocalItemGroupArray(itemType);
-      temp.push(new Item(itemType, amount));
-      localStorage.removeItem(itemType);
-      localStorage.setItem(itemType, JSON.stringify(temp));
-      break;
-  }
+  const temp = getSavedItemGroupArray(itemType);
+  temp.push(new Item(itemType, amount));
+  localStorage.removeItem(itemType);
+  localStorage.setItem(itemType, JSON.stringify(temp));
 }
 
-export function drawItemGroupFromLocalStorage(itemType) {
+export function drawItemGroupRow(itemType) {
   const itemGroupRow = document.querySelector(`#${itemType} .item-flex-wrap`);
   cleanInnerHTML(itemGroupRow);
-  getLocalItemGroupArray(itemType).forEach((itemGroup) => {
+  getSavedItemGroupArray(itemType).forEach((itemGroup) => {
     itemGroupRow.appendChild(makeItemGroupElement(itemGroup));
   });
 }
@@ -44,14 +40,14 @@ export function drawItemGroupFromLocalStorage(itemType) {
 function makeItemGroupElement(itemGroup) {
   const itemGroupElement = document.createElement("div");
   itemGroupElement.classList.add("table-group-item");
-  giveExpClass(itemGroupElement, itemGroup);
+  setExpClass(itemGroupElement, itemGroup);
   for (let i = 0; i < itemGroup.amount; i++) {
-    itemGroupElement.innerText += "🍰 ";
+    itemGroupElement.innerText += getItemTypeIcon(itemGroup.itemType);
   }
   return itemGroupElement;
 }
 
-function giveExpClass(element, itemGroup) {
+function setExpClass(element, itemGroup) {
   const today = new Date();
   const dateDiff = Math.ceil((today.getTime() - itemGroup.time) / (1000 * 3600 * 24)) - 1;
 
@@ -62,13 +58,13 @@ function giveExpClass(element, itemGroup) {
   }
 }
 
-export function getLocalItemGroupArray(itemType) {
+function getSavedItemGroupArray(itemType) {
   return localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
 }
 
 export function getNowStaged(itemType) {
   const nowStock = [];
-  getLocalItemGroupArray(itemType).forEach((item) => {
+  getSavedItemGroupArray(itemType).forEach((item) => {
     nowStock.push(item.amount);
   });
   return nowStock.join(" / ");
