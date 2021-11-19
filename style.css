@@ -54,7 +54,6 @@ a {
   text-decoration: none;
 }
 
-
 .container {
   display: flex;
   flex-direction: column;
@@ -65,7 +64,7 @@ a {
 
 .content {
   display: flex;
-  width: 100%
+  width: 100%;
   padding: 0px 12px 12px 0px;
 }
 
