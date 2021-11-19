@@ -1,6 +1,6 @@
 "use strict";
 
-import { getItemProperty, getItemTypeIcon, getLargeItemType, ItemType } from "./type.js";
+import { getItemProperty, getItemTypeIcon } from "./type.js";
 
 class Item {
   property = {
@@ -58,7 +58,7 @@ function setExpClass(element, itemGroup) {
   }
 }
 
-function getSavedItemGroupArray(itemType) {
+export function getSavedItemGroupArray(itemType) {
   return localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
 }
 
@@ -68,6 +68,15 @@ export function getNowStaged(itemType) {
     nowStock.push(item.amount);
   });
   return nowStock.join(" / ");
+}
+
+export function getStockAmount(itemType) {
+  const itemGroups = getSavedItemGroupArray(itemType);
+  let amount = 0;
+  itemGroups.forEach((itemGroup) => {
+    amount += itemGroup.amount;
+  });
+  return parseInt(amount);
 }
 
 function cleanInnerHTML(element) {
