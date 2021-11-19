@@ -54,6 +54,7 @@ a {
   text-decoration: none;
 }
 
+
 .container {
   display: flex;
   flex-direction: column;
@@ -64,7 +65,7 @@ a {
 
 .content {
   display: flex;
-  height: 100%;
+  width: 100%
   padding: 0px 12px 12px 0px;
 }
 
@@ -101,10 +102,6 @@ a {
   background-color: var(--main-highlight);
 }
 /* header end */
-
-.content  {
-  width: 100%;
-}
 
 /* sidebar */
 .sidebar {
@@ -144,7 +141,6 @@ a {
   flex-direction: column;
   border-radius: 32px;
   padding: 16px;
-  height: 100%;
   background-color: var(--projects-section);
 }
 .tab-section.target {

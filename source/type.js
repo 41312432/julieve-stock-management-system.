@@ -21,7 +21,7 @@ export const ItemType = Object.freeze({
   //
   milkteaSignature: "milkteaSignature",
   //
-  coldebrewBottle: "coldbrewBottle",
+  coldbrewBottle: "coldbrewBottle",
   //
   SeasonCookie: "SeasonCookie",
   oneSeasonCookie: "oneSeasonCookie",
@@ -67,8 +67,8 @@ export function getRealItemName(itemType) {
       return "땅콩버터 마카롱";
     case ItemType.milkteaSignature:
       return "밀크티 시그니쳐";
-    case ItemType.coldebrewBottle:
-      return "콜드브루 원액";
+    case ItemType.coldbrewBottle:
+      return "콜드브루 보틀";
     default:
       return "NO ITEM INFO";
   }
@@ -92,9 +92,9 @@ export function getLargeItemType(itemType) {
     case ItemType.coffeMacaron:
     case ItemType.peanutbutterMacaron:
       return ItemType.Macaron;
-    case ItemType.milkteaBottle:
+    case ItemType.milkteaSignature:
       return ItemType.milkteaSignature;
-    case ItemType.coldebrewBottle:
+    case ItemType.coldbrewBottle:
       return ItemType.coldbrewBottle;
     case ItemType.oneSeasonCookie:
     case ItemType.twoSeasonCookie:
@@ -122,7 +122,7 @@ export function getItemProperty(itemType) {
         numPerBox: 1,
         storageType: StorageType.showCased,
       };
-    case ItemType.coldebrewBottle:
+    case ItemType.coldbrewBottle:
       return {
         expDate: 15,
         numPerBox: 5,
@@ -143,5 +143,9 @@ export function getItemTypeIcon(itemType) {
       return "🍰 ";
     case ItemType.Macaron:
       return "🪀 ";
+    case ItemType.milkteaSignature:
+      return "🧋 ";
+    case ItemType.coldbrewBottle:
+      return "🥤 ";
   }
 }
