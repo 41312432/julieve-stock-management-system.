@@ -1,6 +1,6 @@
 "use strict";
 
-import { addItemGroupToLocalStorage, drawItemGroupRow, getNowStaged } from "./item.js";
+import { addItemGroupToLocalStorage, drawItemGroupRow, getNowStaged, getSavedItemGroupArray, getStockAmount } from "./item.js";
 import { getItemProperty, getLargeItemType, getRealItemName } from "./type.js";
 
 export class Editor {
@@ -42,6 +42,9 @@ export class Editor {
 
     this.addStockButton.addEventListener("click", this.addStock);
     this.addStockButton.addEventListener("click", this.hideEditor);
+
+    this.subStockButton.addEventListener("click", this.subStock);
+    this.subStockButton.addEventListener("click", this.hideEditor);
   }
 
   hideEditor = () => {
@@ -71,7 +74,33 @@ export class Editor {
       alert("0보다 큰 정수값을 입력해야 합니다");
       return;
     }
-    addItemGroupToLocalStorage(this.itemType, this.controlNumber.value);
+    addItemGroupToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
+    drawItemGroupRow(this.itemType);
+  };
+
+  subStock = () => {
+    let value = this.controlNumber.value;
+    if (value <= 0) {
+      alert("0보다 큰 정수값을 입력해야 합니다");
+      return;
+    }
+    if (value > getStockAmount(this.itemType)) {
+      alert("현재 재고보다 작은 값을 입력해야 합니다");
+      return;
+    }
+
+    const itemGroups = getSavedItemGroupArray(this.itemType);
+    while (value) {
+      const itemGroup = itemGroups.shift();
+      if (value >= itemGroup.amount) {
+        value -= itemGroup.amount;
+      } else {
+        itemGroup.amount -= value;
+        itemGroups.unshift(itemGroup);
+        value = 0;
+      }
+    }
+    localStorage.setItem(this.itemType, JSON.stringify(itemGroups));
     drawItemGroupRow(this.itemType);
   };
 }
