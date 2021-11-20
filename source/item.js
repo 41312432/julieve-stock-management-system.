@@ -42,7 +42,7 @@ function makeItemGroupElement(itemGroup) {
   itemGroupElement.classList.add("table-group-item");
   setExpClass(itemGroupElement, itemGroup);
   for (let i = 0; i < itemGroup.amount; i++) {
-    itemGroupElement.innerText += getItemTypeIcon(itemGroup.itemType);
+    itemGroupElement.appendChild(getItemTypeIcon(itemGroup.itemType));
   }
   return itemGroupElement;
 }

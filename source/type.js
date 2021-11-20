@@ -219,22 +219,34 @@ export function getItemProperty(itemType) {
 }
 
 export function getItemTypeIcon(itemType) {
+  const icon = document.createElement("img");
   switch (getLargeItemType(itemType)) {
     case ItemType.sliceCake:
-      return "🍰 ";
+      icon.setAttribute("src", "./icon/sliceCake.png");
+      break;
     case ItemType.Macaron:
-      return "🪀 ";
+      icon.setAttribute("src", "./icon/macaron.png");
+      break;
     case ItemType.milkteaSignature:
-      return "🧋 ";
+      icon.setAttribute("src", "./icon/milktea.png");
+      break;
     case ItemType.coldbrewBottle:
-      return "🥤 ";
+      icon.setAttribute("src", "./icon/coldbrew.png");
+      break;
     case ItemType.julieCookie:
-      return "🎁";
+      icon.setAttribute("src", "./icon/giftbox.png");
+      break;
     case ItemType.Pie:
-      return "🥮 ";
+      icon.setAttribute("src", "./icon/pie.png");
+      break;
     case ItemType.urbanCookie:
-      return "🍪 ";
+      icon.setAttribute("src", "./icon/cookie.png");
+      break;
     case ItemType.Lamington:
-      return "🍞 ";
+      icon.setAttribute("src", "./icon/lamington.png");
+      break;
+    default:
+      icon.setAttribute("src", "./icon/sliceCake.png");
   }
+  return icon;
 }

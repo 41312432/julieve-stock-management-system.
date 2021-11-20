@@ -169,7 +169,7 @@ a {
   position: relative;
   flex-direction: column;
   background-color: var(--table-color-bg);
-  border: 1px solid var(--black);
+  border: 1px solid var(--main-dark);
   border-radius: 5px;
 }
 .section-table {
@@ -180,13 +180,13 @@ a {
 tr,
 td {
   font-weight: 700;
-  border: 0.5px solid var(--table-color-double-line);
+  border: 1px solid var(--main-dark);
 }
 
 .section-table-header {
   display: table-header-group;
   font-size: 1.25rem;
-  border-bottom: 3px double var(--table-color-double-line);
+  border-bottom: 3px double var(--main-dark);
 }
 
 .table-topCategory-td {
@@ -204,17 +204,20 @@ td {
 .table-group-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: var(--table-color-item);
-  min-width: 6rem;
+  justify-content: space-around;
+  border: 3px solid var(--main-color);
+  min-width: 5rem;
   height: 2rem;
   border-radius: 10px;
-  padding: 0 1rem;
+  padding: 0 5px;
   margin: 5px;
   transition: 0.2s ease-in;
 }
 .table-group-item:hover {
-  background-color: var(--main-special);
+  background-color: var(--main-highlight);
+}
+.table-group-item > img {
+  padding: 0 3px;
 }
 
 .table-edit-button {
@@ -239,11 +242,11 @@ td {
 }
 
 .eve {
-  background-color: var(--table-color-item-eve);
+  border: 3px solid var(--table-color-item-eve);
 }
 
 .expired {
-  color: red;
+  border: 3px solid var(--table-color-item-eve);
   background-color: var(--table-color-item-expired);
 }
 /*section table end*/
@@ -314,7 +317,7 @@ td {
   width: 100%;
   border: 1px solid black;
 }
-.editor-section-form > div {
+z .editor-section-form > div {
   border: 1px solid black;
 }
 .editor-section-number,
