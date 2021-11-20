@@ -46,6 +46,24 @@ export const ItemType = Object.freeze({
   greenteaLamington: "greenteaLamington",
   strawberryLamington: "strawberryLamington",
   //
+  chestnut: "chestnut",
+  //냉동보관
+  oneScone: "oneScone",
+  plainScone: "plainScone",
+  cheezeScone: "cheezeScone",
+  chocolateScone: "chocolateScone",
+  walnutScone: "walnutScone",
+  pumpkinScone: "pumpkinScone",
+  mugwartScone: "mugwartScone",
+  //
+  twoScone: "twoScone",
+  butterScone: "butterScone",
+  smoreScone: "smoreScone",
+  //
+  Tart: "Tart",
+  eggTart: "eggTart",
+  appleTart: "appleTart",
+  chestnutTart: "chestnutTart",
 });
 
 export const StorageType = Object.freeze({
@@ -117,6 +135,30 @@ export function getRealItemName(itemType) {
       return "녹차 래잉턴";
     case ItemType.strawberryLamington:
       return "딸기 래잉턴";
+    case ItemType.chestnut:
+      return "초코밤";
+    case ItemType.plainScone:
+      return "플레인 스콘";
+    case ItemType.cheezeScone:
+      return "치즈 스콘";
+    case ItemType.chocolateScone:
+      return "초코 스콘";
+    case ItemType.walnutScone:
+      return "호밀호두 스콘";
+    case ItemType.pumpkinScone:
+      return "밤호박 스콘";
+    case ItemType.mugwartScone:
+      return "쑥초코 스콘";
+    case ItemType.butterScone:
+      return "버터플레인 스콘";
+    case ItemType.smoreScone:
+      return "초코스모어 스콘";
+    case ItemType.eggTart:
+      return "에그 타르트";
+    case ItemType.appleTart:
+      return "사과 타르트";
+    case ItemType.chestnutTart:
+      return "밤 타르트";
     default:
       return "NO ITEM INFO";
   }
@@ -162,6 +204,22 @@ export function getLargeItemType(itemType) {
     case ItemType.greenteaLamington:
     case ItemType.strawberryLamington:
       return ItemType.Lamington;
+    case ItemType.chestnut:
+      return ItemType.chestnut;
+    case ItemType.plainScone:
+    case ItemType.cheezeScone:
+    case ItemType.chocolateScone:
+    case ItemType.walnutScone:
+    case ItemType.pumpkinScone:
+    case ItemType.mugwartScone:
+      return ItemType.oneScone;
+    case ItemType.butterScone:
+    case ItemType.smoreScone:
+      return ItemType.twoScone;
+    case ItemType.eggTart:
+    case ItemType.appleTart:
+    case ItemType.chestnutTart:
+      return ItemType.Tart;
   }
 }
 
@@ -215,6 +273,30 @@ export function getItemProperty(itemType) {
         numPerBox: 16,
         storageType: StorageType.refridgereted,
       };
+    case ItemType.chestnut:
+      return {
+        expDate: null,
+        numPerBox: 16,
+        storageType: StorageType.refridgereted,
+      };
+    case ItemType.oneScone:
+      return {
+        expDate: null,
+        numPerBox: 16,
+        storageType: StorageType.frozen,
+      };
+    case ItemType.twoScone:
+      return {
+        expDate: null,
+        numPerBox: 16,
+        storageType: StorageType.frozen,
+      };
+    case ItemType.Tart:
+      return {
+        expDate: null,
+        numPerBox: 16,
+        storageType: StorageType.frozen,
+      };
   }
 }
 
@@ -244,6 +326,18 @@ export function getItemTypeIcon(itemType) {
       break;
     case ItemType.Lamington:
       icon.setAttribute("src", "./icon/lamington.png");
+      break;
+    case ItemType.chestnut:
+      icon.setAttribute("src", "./icon/chestnut.png");
+      break;
+    case ItemType.oneScone:
+      icon.setAttribute("src", "./icon/oneScone.png");
+      break;
+    case ItemType.twoScone:
+      icon.setAttribute("src", "./icon/twoScone.png");
+      break;
+    case ItemType.Tart:
+      icon.setAttribute("src", "./icon/tart.png");
       break;
     default:
       icon.setAttribute("src", "./icon/sliceCake.png");
