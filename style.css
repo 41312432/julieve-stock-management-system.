@@ -317,7 +317,7 @@ td {
   width: 100%;
   border: 1px solid black;
 }
-z .editor-section-form > div {
+.editor-section-form > div {
   border: 1px solid black;
 }
 .editor-section-number,
@@ -358,26 +358,30 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--main-dark);
+  border: 3px solid var(--main-color);
   border-radius: 10px;
   margin: 5px;
   width: 60%;
   height: 45%;
   font-size: 4em;
-  background: var(--main-color);
+  color: var(--main-darker);
 }
+.number-control-button:active {
+  background-color: var(--main-color);
+  color: var(--main-highlight);
+}
+
 .stock-control-button {
   all: unset;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--main-highlight);
+  border: 3px solid var(--main-color);
   border-radius: 10px;
   margin: 5px;
   width: 80%;
   height: 45%;
   font-size: 3em;
-  background: var(--main-color);
 }
 
 .hidden {
