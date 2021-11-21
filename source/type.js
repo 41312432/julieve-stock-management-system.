@@ -64,6 +64,24 @@ export const ItemType = Object.freeze({
   eggTart: "eggTart",
   appleTart: "appleTart",
   chestnutTart: "chestnutTart",
+  //
+  chocolateBase: "chocolateBase",
+  //실온보관
+  Madeleine: "Madelein",
+  plainMadelein: "plainMadelein",
+  strawberryMadelein: "strawberryMadelein",
+  milkteaMadelein: "milkteaMadelein",
+  chocolateMadelein: "chocolateMadelein",
+  //
+  Tea: "Tea",
+  earlgreyTea: "earlgreyTea",
+  englishbreakfastTea: "englishbreakfastTea",
+  ladygreyTea: "ladygreyTea",
+  chamomileTea: "chamomileTea",
+  peppermintTea: "peppermintTea",
+  strawberrymangoTea: "strawberrymangoTea",
+  dazzlingTea: "dazzlingTea",
+  vanillaTea: "vanillaTea",
 });
 
 export const StorageType = Object.freeze({
@@ -128,13 +146,13 @@ export function getRealItemName(itemType) {
     case ItemType.strawberryBanana:
       return "말랑딸기바나나";
     case ItemType.chocolateLamington:
-      return "초코 래잉턴";
+      return "초코 래밍턴";
     case ItemType.lemonLamington:
-      return "레몬 래잉턴";
+      return "레몬 래밍턴";
     case ItemType.greenteaLamington:
-      return "녹차 래잉턴";
+      return "녹차 래밍턴";
     case ItemType.strawberryLamington:
-      return "딸기 래잉턴";
+      return "딸기 래밍턴";
     case ItemType.chestnut:
       return "초코밤";
     case ItemType.plainScone:
@@ -159,6 +177,32 @@ export function getRealItemName(itemType) {
       return "사과 타르트";
     case ItemType.chestnutTart:
       return "밤 타르트";
+    case ItemType.chocolateBase:
+      return "초코 베이스";
+    case ItemType.plainMadelein:
+      return "플레인 마들렌";
+    case ItemType.milkteaMadelein:
+      return "밀크티 마들렌";
+    case ItemType.strawberryMadelein:
+      return "딸기 마들렌";
+    case ItemType.chocolateMadelein:
+      return "초코 마들렌";
+    case ItemType.earlgreyTea:
+      return "얼그레이";
+    case ItemType.englishbreakfastTea:
+      return "잉글리쉬 블랙퍼스트";
+    case ItemType.ladygreyTea:
+      return "레이디그레이";
+    case ItemType.chamomileTea:
+      return "캐모마일";
+    case ItemType.peppermintTea:
+      return "페퍼민트";
+    case ItemType.strawberrymangoTea:
+      return "스트로베리&망고";
+    case ItemType.dazzlingTea:
+      return "다즐링";
+    case ItemType.vanillaTea:
+      return "바닐라";
     default:
       return "NO ITEM INFO";
   }
@@ -220,6 +264,24 @@ export function getLargeItemType(itemType) {
     case ItemType.appleTart:
     case ItemType.chestnutTart:
       return ItemType.Tart;
+    case ItemType.chocolateBase:
+      return ItemType.chocolateBase;
+    case ItemType.plainMadelein:
+    case ItemType.milkteaMadelein:
+    case ItemType.strawberryMadelein:
+    case ItemType.chocolateMadelein:
+      return ItemType.Madeleine;
+    case ItemType.earlgreyTea:
+    case ItemType.englishbreakfastTea:
+    case ItemType.ladygreyTea:
+    case ItemType.chamomileTea:
+    case ItemType.peppermintTea:
+    case ItemType.strawberrymangoTea:
+    case ItemType.dazzlingTea:
+    case ItemType.vanillaTea:
+      return ItemType.Tea;
+    default:
+      return ItemType.sliceCake;
   }
 }
 
@@ -251,7 +313,7 @@ export function getItemProperty(itemType) {
       };
     case ItemType.julieCookie:
       return {
-        expDate: null,
+        expDate: 90,
         numPerBox: null,
         storageType: StorageType.showCased,
       };
@@ -263,7 +325,7 @@ export function getItemProperty(itemType) {
       };
     case ItemType.urbanCookie:
       return {
-        expDate: null,
+        expDate: 90,
         numPerBox: 14,
         storageType: StorageType.refridgereted,
       };
@@ -297,10 +359,28 @@ export function getItemProperty(itemType) {
         numPerBox: 16,
         storageType: StorageType.frozen,
       };
+    case ItemType.chocolateBase:
+      return {
+        expDate: 90,
+        numPerBox: 20,
+        StorageType: StorageType.frozen,
+      };
+    case ItemType.Madeleine:
+      return {
+        expDate: 5,
+        numPerBox: 16,
+        storageType: StorageType.roomTemperatured,
+      };
+    case ItemType.Tea:
+      return {
+        expDate: 90,
+        numPerBox: 20,
+        storageType: StorageType.roomTemperatured,
+      };
   }
 }
 
-export function getItemTypeIcon(itemType) {
+export function getIconElement(itemType) {
   const icon = document.createElement("img");
   switch (getLargeItemType(itemType)) {
     case ItemType.sliceCake:
@@ -339,8 +419,23 @@ export function getItemTypeIcon(itemType) {
     case ItemType.Tart:
       icon.setAttribute("src", "./icon/tart.png");
       break;
+    case ItemType.Tart:
+      icon.setAttribute("src", "./icon/chocolateBase.png");
+      break;
+    case ItemType.Madeleine:
+      icon.setAttribute("src", "./icon/madelein.png");
+      break;
+    case ItemType.Tea:
+      icon.setAttribute("src", "./icon/tea.png");
+      break;
     default:
       icon.setAttribute("src", "./icon/sliceCake.png");
   }
   return icon;
+}
+
+export function getNumericExpression(itemType, amount) {
+  const box = parseInt(amount / getItemProperty(itemType).numPerBox);
+  const remainder = amount % getItemProperty(itemType).numPerBox;
+  return `${box}박스 ${remainder}개`;
 }

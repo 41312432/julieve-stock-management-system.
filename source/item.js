@@ -1,6 +1,6 @@
 "use strict";
 
-import { getItemProperty, getItemTypeIcon } from "./type.js";
+import { getItemProperty, getIconElement, getNumericExpression } from "./type.js";
 
 class Item {
   property = {
@@ -41,8 +41,12 @@ function makeItemGroupElement(itemGroup) {
   const itemGroupElement = document.createElement("div");
   itemGroupElement.classList.add("table-group-item");
   setExpClass(itemGroupElement, itemGroup);
-  for (let i = 0; i < itemGroup.amount; i++) {
-    itemGroupElement.appendChild(getItemTypeIcon(itemGroup.itemType));
+  if (itemGroup.amount > 6) {
+    itemGroupElement.innerHTML = getNumericExpression(itemGroup.itemType, itemGroup.amount);
+  } else {
+    for (let i = 0; i < itemGroup.amount; i++) {
+      itemGroupElement.appendChild(getIconElement(itemGroup.itemType));
+    }
   }
   return itemGroupElement;
 }
