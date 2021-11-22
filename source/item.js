@@ -1,6 +1,6 @@
 "use strict";
 
-import { getItemProperty, getIconElement, getNumericExpression } from "./type.js";
+import { getTypeProperty, getIconElement, getStrExpElement } from "./type.js";
 
 class Item {
   property = {
@@ -14,7 +14,7 @@ class Item {
     this.time = this.now.getTime();
     this.itemType = itemType;
     this.amount = amount;
-    this.property = getItemProperty(itemType);
+    this.property = getTypeProperty(itemType);
   }
 
   setProperty(_property) {
@@ -22,7 +22,7 @@ class Item {
   }
 }
 
-export function addItemGroupToLocalStorage(itemType, amount) {
+export function saveItemGroupToLocalStorage(itemType, amount) {
   const temp = getSavedItemGroupArray(itemType);
   temp.push(new Item(itemType, amount));
   localStorage.removeItem(itemType);
@@ -31,7 +31,9 @@ export function addItemGroupToLocalStorage(itemType, amount) {
 
 export function drawItemGroupRow(itemType) {
   const itemGroupRow = document.querySelector(`#${itemType} .item-flex-wrap`);
-  cleanInnerHTML(itemGroupRow);
+  (itemGroupRow) => {
+    itemGroupRow.innerHTML = "";
+  };
   getSavedItemGroupArray(itemType).forEach((itemGroup) => {
     itemGroupRow.appendChild(makeItemGroupElement(itemGroup));
   });
@@ -41,8 +43,8 @@ function makeItemGroupElement(itemGroup) {
   const itemGroupElement = document.createElement("div");
   itemGroupElement.classList.add("table-group-item");
   setExpClass(itemGroupElement, itemGroup);
-  if (itemGroup.amount > 6) {
-    itemGroupElement.innerHTML = getNumericExpression(itemGroup.itemType, itemGroup.amount);
+  if (itemGroup.amount > 4) {
+    itemGroupElement.appendChild(getStrExpElement(itemGroup.itemType, itemGroup.amount));
   } else {
     for (let i = 0; i < itemGroup.amount; i++) {
       itemGroupElement.appendChild(getIconElement(itemGroup.itemType));
@@ -66,25 +68,19 @@ export function getSavedItemGroupArray(itemType) {
   return localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
 }
 
-export function getNowStaged(itemType) {
-  const nowStock = [];
+export function getNowStock(itemType) {
+  const staged = [];
   getSavedItemGroupArray(itemType).forEach((item) => {
-    nowStock.push(item.amount);
+    staged.push(item.amount);
   });
-  return nowStock.join(" / ");
+  return staged.join(" / ");
 }
 
-export function getStockAmount(itemType) {
+export function sumOfStock(itemType) {
   const itemGroups = getSavedItemGroupArray(itemType);
   let amount = 0;
   itemGroups.forEach((itemGroup) => {
     amount += itemGroup.amount;
   });
   return parseInt(amount);
-}
-
-function cleanInnerHTML(element) {
-  if (element) {
-    element.innerHTML = "";
-  }
 }

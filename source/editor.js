@@ -1,7 +1,7 @@
 "use strict";
 
-import { addItemGroupToLocalStorage, drawItemGroupRow, getNowStaged, getSavedItemGroupArray, getStockAmount } from "./item.js";
-import { getItemProperty, getLargeItemType, getRealItemName } from "./type.js";
+import { saveItemGroupToLocalStorage, drawItemGroupRow, getNowStock, getSavedItemGroupArray, sumOfStock } from "./item.js";
+import { getTypeProperty, getLargeItemType, getRealItemName } from "./type.js";
 
 export class Editor {
   constructor() {
@@ -51,10 +51,10 @@ export class Editor {
   setBasicProperties = (itemType) => {
     this.itemType = itemType;
     this.property.name = getRealItemName(itemType);
-    this.property.expDate = getItemProperty(itemType).expDate;
-    this.property.numPerBox = getItemProperty(itemType).numPerBox;
-    this.property.storageType = getItemProperty(itemType).storageType;
-    this.property.nowStaged = getNowStaged(itemType);
+    this.property.expDate = getTypeProperty(itemType).expDate;
+    this.property.numPerBox = getTypeProperty(itemType).numPerBox;
+    this.property.storageType = getTypeProperty(itemType).storageType;
+    this.property.nowStaged = getNowStock(itemType);
   };
 
   drawBasicProperties() {
@@ -70,7 +70,7 @@ export class Editor {
     if (this.controlNumber.value <= 0) {
       alert("0보다 큰 정수값을 입력해야 합니다");
     } else {
-      addItemGroupToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
+      saveItemGroupToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
       drawItemGroupRow(this.itemType);
       this.container.classList.add("hidden");
     }
@@ -80,7 +80,7 @@ export class Editor {
     let value = this.controlNumber.value;
     if (value <= 0) {
       alert("0보다 큰 정수값을 입력해야 합니다");
-    } else if (value > getStockAmount(this.itemType)) {
+    } else if (value > sumOfStock(this.itemType)) {
       alert("현재 재고보다 작은 값을 입력해야 합니다");
     } else {
       const itemGroups = getSavedItemGroupArray(this.itemType);

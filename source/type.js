@@ -40,13 +40,13 @@ export const ItemType = Object.freeze({
   peanutbutterStrawberry: "peanutbutterStrawberry",
   strawberryBanana: "strawberryBanana",
   //
-  Lamington: "Laminton",
+  Lamington: "Lamington",
   chocolateLamington: "chocolateLamington",
   lemonLamington: "lemonLamington",
   greenteaLamington: "greenteaLamington",
   strawberryLamington: "strawberryLamington",
   //
-  chestnut: "chestnut",
+  Chestnut: "Chestnut",
   //냉동보관
   oneScone: "oneScone",
   plainScone: "plainScone",
@@ -67,11 +67,11 @@ export const ItemType = Object.freeze({
   //
   chocolateBase: "chocolateBase",
   //실온보관
-  Madeleine: "Madelein",
-  plainMadelein: "plainMadelein",
-  strawberryMadelein: "strawberryMadelein",
-  milkteaMadelein: "milkteaMadelein",
-  chocolateMadelein: "chocolateMadelein",
+  Madeleine: "Madeleine",
+  plainMadeleine: "plainMadeleine",
+  strawberryMadeleine: "strawberryMadeleine",
+  milkteaMadeleine: "milkteaMadeleine",
+  chocolateMadeleine: "chocolateMadeleine",
   //
   Tea: "Tea",
   earlgreyTea: "earlgreyTea",
@@ -153,7 +153,7 @@ export function getRealItemName(itemType) {
       return "녹차 래밍턴";
     case ItemType.strawberryLamington:
       return "딸기 래밍턴";
-    case ItemType.chestnut:
+    case ItemType.Chestnut:
       return "초코밤";
     case ItemType.plainScone:
       return "플레인 스콘";
@@ -179,13 +179,13 @@ export function getRealItemName(itemType) {
       return "밤 타르트";
     case ItemType.chocolateBase:
       return "초코 베이스";
-    case ItemType.plainMadelein:
+    case ItemType.plainMadeleine:
       return "플레인 마들렌";
-    case ItemType.milkteaMadelein:
+    case ItemType.milkteaMadeleine:
       return "밀크티 마들렌";
-    case ItemType.strawberryMadelein:
+    case ItemType.strawberryMadeleine:
       return "딸기 마들렌";
-    case ItemType.chocolateMadelein:
+    case ItemType.chocolateMadeleine:
       return "초코 마들렌";
     case ItemType.earlgreyTea:
       return "얼그레이";
@@ -248,8 +248,8 @@ export function getLargeItemType(itemType) {
     case ItemType.greenteaLamington:
     case ItemType.strawberryLamington:
       return ItemType.Lamington;
-    case ItemType.chestnut:
-      return ItemType.chestnut;
+    case ItemType.Chestnut:
+      return ItemType.Chestnut;
     case ItemType.plainScone:
     case ItemType.cheezeScone:
     case ItemType.chocolateScone:
@@ -266,10 +266,10 @@ export function getLargeItemType(itemType) {
       return ItemType.Tart;
     case ItemType.chocolateBase:
       return ItemType.chocolateBase;
-    case ItemType.plainMadelein:
-    case ItemType.milkteaMadelein:
-    case ItemType.strawberryMadelein:
-    case ItemType.chocolateMadelein:
+    case ItemType.plainMadeleine:
+    case ItemType.milkteaMadeleine:
+    case ItemType.strawberryMadeleine:
+    case ItemType.chocolateMadeleine:
       return ItemType.Madeleine;
     case ItemType.earlgreyTea:
     case ItemType.englishbreakfastTea:
@@ -285,7 +285,7 @@ export function getLargeItemType(itemType) {
   }
 }
 
-export function getItemProperty(itemType) {
+export function getTypeProperty(itemType) {
   switch (getLargeItemType(itemType)) {
     case ItemType.sliceCake:
       return {
@@ -335,7 +335,7 @@ export function getItemProperty(itemType) {
         numPerBox: 16,
         storageType: StorageType.refridgereted,
       };
-    case ItemType.chestnut:
+    case ItemType.Chestnut:
       return {
         expDate: null,
         numPerBox: 16,
@@ -381,61 +381,33 @@ export function getItemProperty(itemType) {
 }
 
 export function getIconElement(itemType) {
-  const icon = document.createElement("img");
-  switch (getLargeItemType(itemType)) {
-    case ItemType.sliceCake:
-      icon.setAttribute("src", "./icon/sliceCake.png");
-      break;
-    case ItemType.Macaron:
-      icon.setAttribute("src", "./icon/macaron.png");
-      break;
-    case ItemType.milkteaSignature:
-      icon.setAttribute("src", "./icon/milktea.png");
-      break;
-    case ItemType.coldbrewBottle:
-      icon.setAttribute("src", "./icon/coldbrew.png");
-      break;
-    case ItemType.julieCookie:
-      icon.setAttribute("src", "./icon/giftbox.png");
-      break;
-    case ItemType.Pie:
-      icon.setAttribute("src", "./icon/pie.png");
-      break;
-    case ItemType.urbanCookie:
-      icon.setAttribute("src", "./icon/cookie.png");
-      break;
-    case ItemType.Lamington:
-      icon.setAttribute("src", "./icon/lamington.png");
-      break;
-    case ItemType.chestnut:
-      icon.setAttribute("src", "./icon/chestnut.png");
-      break;
-    case ItemType.oneScone:
-      icon.setAttribute("src", "./icon/oneScone.png");
-      break;
-    case ItemType.twoScone:
-      icon.setAttribute("src", "./icon/twoScone.png");
-      break;
-    case ItemType.Tart:
-      icon.setAttribute("src", "./icon/tart.png");
-      break;
-    case ItemType.Tart:
-      icon.setAttribute("src", "./icon/chocolateBase.png");
-      break;
-    case ItemType.Madeleine:
-      icon.setAttribute("src", "./icon/madelein.png");
-      break;
-    case ItemType.Tea:
-      icon.setAttribute("src", "./icon/tea.png");
-      break;
-    default:
-      icon.setAttribute("src", "./icon/sliceCake.png");
-  }
-  return icon;
+  const element = document.createElement("img");
+  element.setAttribute("src", `./icon/${getLargeItemType(itemType)}.png`);
+  return element;
 }
 
-export function getNumericExpression(itemType, amount) {
-  const box = parseInt(amount / getItemProperty(itemType).numPerBox);
-  const remainder = amount % getItemProperty(itemType).numPerBox;
-  return `${box}박스 ${remainder}개`;
+export function getStrExpElement(itemType, amount) {
+  const element = document.createElement("div");
+  const boxNumber = parseInt(amount / getTypeProperty(itemType).numPerBox);
+  const remainderNumber = amount % getTypeProperty(itemType).numPerBox;
+
+  if (boxNumber == 0) {
+    element.innerHTML = `
+    <img src="./icon/${getLargeItemType(itemType)}.png">
+    <p>x${remainderNumber}</P>
+    `;
+  } else if (remainderNumber == 0) {
+    element.innerHTML = `
+    <img src="./icon/Box.png">
+    <p>x${boxNumber}</P>
+    `;
+  } else {
+    element.innerHTML = `
+    <img src="./icon/Box.png">
+    <p>x${boxNumber}</P>
+    <img src="./icon/${getLargeItemType(itemType)}.png">
+    <p>x${remainderNumber}</P>
+    `;
+  }
+  return element;
 }

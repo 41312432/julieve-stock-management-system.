@@ -26,10 +26,6 @@
   --link-color-active-bg: #fafafa;
 
   --table-color-bg: #fff;
-  --table-color-double-line: #285e72;
-  --table-color-item: #00bfa5;
-  --table-color-item-eve: #ffa17a;
-  --table-color-item-expired: #fa5843;
 
   --button-bg: #1f1c24;
 }
@@ -52,6 +48,10 @@ button,
 a {
   cursor: pointer;
   text-decoration: none;
+}
+
+p {
+  margin: auto;
 }
 
 .container {
@@ -93,7 +93,7 @@ a {
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
-  font-size: 1rem;
+  font-size: 24px;
   transition: transform 0.1s ease-in;
 }
 .header-helper-button:hover {
@@ -203,6 +203,7 @@ td {
 
 .table-group-item {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-around;
   border: 2.5px solid var(--main-color);
@@ -216,11 +217,16 @@ td {
 .table-group-item:hover {
   background-color: var(--main-highlight);
 }
-.table-group-item > img {
+.table-group-item img {
   padding: 0 3px;
   height: 2rem;
   width: 2.5rem;
-  filter: opacity(0.5) drop-shadow(0 0 0 var(--main-highlight-light));
+  filter: opacity(0.5) drop-shadow(0 0 0 var(--main-color-darker));
+}
+.table-group-item div {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
 
 .table-edit-button {
@@ -245,12 +251,12 @@ td {
 }
 
 .eve {
-  border: 3px solid var(--table-color-item-eve);
+  border: 3px solid var(--main-highlight-light);
 }
 
 .expired {
-  border: 3px solid var(--table-color-item-eve);
-  background-color: var(--table-color-item-expired);
+  border: 3px solid var(--main-special);
+  background-color: var(--gray);
 }
 /*section table end*/
 
