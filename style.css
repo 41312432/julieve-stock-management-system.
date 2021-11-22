@@ -167,15 +167,18 @@ p {
 .table-border {
   display: flex;
   position: relative;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   background-color: var(--table-color-bg);
   border: 1px solid var(--main-dark);
   border-radius: 5px;
 }
+
 .section-table {
   display: table;
   border-collapse: collapse;
   text-align: center;
+  width: 100%;
 }
 tr,
 td {
