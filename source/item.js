@@ -31,15 +31,15 @@ export function saveItemGroupToLocalStorage(itemType, amount) {
 
 export function drawItemGroupRow(itemType) {
   const itemGroupRow = document.querySelector(`#${itemType} .item-flex-wrap`);
-  (itemGroupRow) => {
+  if (itemGroupRow) {
     itemGroupRow.innerHTML = "";
-  };
+  }
   getSavedItemGroupArray(itemType).forEach((itemGroup) => {
     itemGroupRow.appendChild(makeItemGroupElement(itemGroup));
   });
 }
 
-function makeItemGroupElement(itemGroup) {
+export function makeItemGroupElement(itemGroup) {
   const itemGroupElement = document.createElement("div");
   itemGroupElement.classList.add("table-group-item");
   setExpClass(itemGroupElement, itemGroup);

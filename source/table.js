@@ -1,4 +1,5 @@
 import { Editor } from "./editor.js";
+import { drawInventoryRow } from "./inventory.js";
 import { drawItemGroupRow } from "./item.js";
 import { ItemType } from "./type.js";
 
@@ -16,11 +17,15 @@ export class Table {
       today.innerText = `${this.today.getMonth()}월 ${this.today.getDate()}일 ${korDay(this.today.getDay())}요일`;
     });
 
-    Object.keys(ItemType).forEach((itemType) => drawItemGroupRow(itemType));
+    Object.keys(ItemType).forEach((itemType) => {
+      drawItemGroupRow(itemType);
+      drawInventoryRow(itemType);
+    });
   }
 
   openEditor = (event) => {
     const clickItemType = event.target.closest("tr").getAttribute("id");
+    this.editor.checkSectionType(event.target.closest(".tab-section").getAttribute("id"));
     this.editor.setBasicProperties(clickItemType);
     this.editor.drawBasicProperties();
     this.editor.container.classList.remove("hidden");
