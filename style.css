@@ -29,29 +29,25 @@
 
   --button-bg: #1f1c24;
 }
-
 html,
 body {
   width: 100%;
   height: 100vh;
   margin: 0;
 }
-
 body {
   font-family: "Gowun Dodum", sans-serif;
   display: flex;
   justify-content: center;
   background-color: var(--app-container);
 }
-
 button,
 a {
   cursor: pointer;
   text-decoration: none;
 }
-
 p {
-  margin: auto;
+  margin: 0;
 }
 
 .container {
@@ -61,7 +57,6 @@ p {
   height: 100%;
   background-color: var(--app-container);
 }
-
 .content {
   display: flex;
   width: 100%;
@@ -77,7 +72,7 @@ p {
   padding: 8px 24px;
 }
 .header-logo {
-  color: var(--black);
+  color: var(--main-darker);
   font-size: 2.5rem;
   margin: 0 16px;
 }
@@ -94,7 +89,7 @@ p {
   width: 2.5rem;
   height: 2.5rem;
   font-size: 24px;
-  transition: transform 0.1s ease-in;
+  transition: transform 0.2s ease-in;
 }
 .header-helper-button:hover {
   transform: scale(1.1);
@@ -132,7 +127,6 @@ p {
   background-color: var(--link-color-active-bg);
   color: var(--link-color-active);
 }
-/* siedbar end */
 
 .tab-section {
   flex: 1;
@@ -145,6 +139,7 @@ p {
 .tab-section.target {
   display: flex;
 }
+/* siedbar end */
 
 /* section header */
 .section-header {
@@ -167,15 +162,18 @@ p {
 .table-border {
   display: flex;
   position: relative;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   background-color: var(--table-color-bg);
   border: 1px solid var(--main-dark);
   border-radius: 5px;
 }
+
 .section-table {
   display: table;
   border-collapse: collapse;
   text-align: center;
+  width: 100%;
 }
 tr,
 td {
@@ -234,9 +232,9 @@ td {
   align-items: center;
   justify-content: center;
   color: #fff;
-  background-color: var(--button-bg);
+  background-color: var(--main-darker);
   padding: 0;
-  border: 1px solid var(--main-dark);
+  border: 1px solid var(--main-darker);
   border-radius: 10px;
   margin: 10px auto;
   width: 2rem;
@@ -260,7 +258,7 @@ td {
 }
 /*section table end*/
 
-/*modal*/
+/*editor*/
 .editor-container {
   position: fixed;
   display: flex;
@@ -286,75 +284,50 @@ td {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
   position: relative;
   top: 0px;
-  min-width: 60%;
-  min-height: 5%;
   padding: 25px 50px;
   border-radius: 10px;
+  width: 70%;
 }
 
 .editor-heading {
+  font-size: 3rem;
   margin: 0;
+  margin-left: 15px;
 }
 
 .editor-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid black;
+  width: 100%;
+}
+.editor-section-status {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding-left: 15px;
   border: 1px solid black;
-}
-.editor-section-info {
-  display: flex;
-  height: 50%;
-  width: 100%;
-  border: 1px solid black;
-}
-.editor-section-info > div {
-  width: 50%;
-  border: 1px solid black;
-}
-.editor-section-info-name {
-  text-align: center;
-  font-size: 3em;
-}
-.editor-section-info-status {
-  padding-left: 5%;
 }
 .editor-section-form {
+  flex: 3;
   display: flex;
-  height: 50%;
-  width: 100%;
-  border: 1px solid black;
 }
 .editor-section-form > div {
   border: 1px solid black;
 }
-.editor-section-number,
-.editor-section-control-number {
+
+.editor-section-number {
   flex: 1;
 }
-.editor-section-control-stock {
-  flex: 2;
-}
-.editor-section-control-number,
-.editor-section-control-stock {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .editor-section-number > input {
   all: unset;
   text-align: center;
   vertical-align: middle;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
   height: 100%;
   width: 100%;
-  font-size: 2em;
+  font-size: 6em;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -362,36 +335,61 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.number-control-button {
-  all: unset;
+.editor-section-control-number,
+.editor-section-control-stock,
+.editor-section-control-box,
+.editor-section-control-inventory {
   display: flex;
-  justify-content: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  border: 3px solid var(--main-color);
-  border-radius: 10px;
-  margin: 5px;
-  width: 60%;
-  height: 45%;
-  font-size: 4em;
-  color: var(--main-darker);
-}
-.number-control-button:active,
-.stock-control-button:active {
-  background-color: var(--main-color);
-  color: var(--main-highlight);
 }
 
-.stock-control-button {
+.number-control-button,
+.box-control-button,
+.stock-control-button,
+.inventory-control-button {
   all: unset;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border: 3px solid var(--main-color);
   border-radius: 10px;
-  margin: 5px;
-  width: 80%;
+  margin: 3px;
+  width: 45%;
   height: 45%;
   font-size: 3em;
+  color: var(--main-darker);
+  transition: 0.1s ease-in;
+}
+.box-control-button {
+  width: 60%;
+}
+.stock-control-button {
+  width: 60%;
+}
+.inventory-control-button {
+  text-align: center;
+  height: 70%;
+  width: 70%;
+}
+.number-control-button:hover,
+.box-control-button:hover,
+.stock-control-button:hover,
+.inventory-control-button:hover {
+  background-color: var(--main-color);
+  color: var(--main-highlight);
+  cursor: pointer;
+}
+
+.number-control-button:active,
+.box-control-button:active,
+.stock-control-button:active,
+.inventory-control-button:active {
+  background-color: var(--main-color);
+  color: var(--main-highlight);
+  transform: scale(1.1);
 }
 
 .hidden {
