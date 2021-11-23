@@ -232,9 +232,9 @@ td {
   align-items: center;
   justify-content: center;
   color: #fff;
-  background-color: var(--button-bg);
+  background-color: var(--main-darker);
   padding: 0;
-  border: 1px solid var(--main-dark);
+  border: 1px solid var(--main-darker);
   border-radius: 10px;
   margin: 10px auto;
   width: 2rem;
@@ -375,14 +375,18 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 70%;
 }
 .number-control-button:hover,
-.stock-control-button:hover {
+.box-control-button:hover,
+.stock-control-button:hover,
+.inventory-control-button:hover {
   background-color: var(--main-color);
   color: var(--main-highlight);
   cursor: pointer;
 }
 
 .number-control-button:active,
-.stock-control-button:active {
+.box-control-button:active,
+.stock-control-button:active,
+.inventory-control-button:active {
   background-color: var(--main-color);
   color: var(--main-highlight);
   transform: scale(1.1);

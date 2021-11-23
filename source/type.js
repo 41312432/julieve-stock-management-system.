@@ -290,13 +290,13 @@ export function getTypeProperty(itemType) {
     case ItemType.sliceCake:
       return {
         expDate: 5,
-        numPerBox: 8,
+        numPerBox: 5,
         storageType: StorageType.showCased,
       };
     case ItemType.Macaron:
       return {
         expDate: 10,
-        numPerBox: 32,
+        numPerBox: 14,
         storageType: StorageType.showCased,
       };
     case ItemType.milkteaSignature:
@@ -308,13 +308,13 @@ export function getTypeProperty(itemType) {
     case ItemType.coldbrewBottle:
       return {
         expDate: 14,
-        numPerBox: 5,
+        numPerBox: 1,
         storageType: StorageType.showCased,
       };
     case ItemType.julieCookie:
       return {
         expDate: 90,
-        numPerBox: null,
+        numPerBox: 60,
         storageType: StorageType.showCased,
       };
     case ItemType.Pie:
@@ -325,43 +325,43 @@ export function getTypeProperty(itemType) {
       };
     case ItemType.urbanCookie:
       return {
-        expDate: 90,
+        expDate: 180,
         numPerBox: 14,
         storageType: StorageType.refridgereted,
       };
     case ItemType.Lamington:
       return {
         expDate: 5,
-        numPerBox: 16,
+        numPerBox: 18,
         storageType: StorageType.refridgereted,
       };
     case ItemType.Chestnut:
       return {
-        expDate: null,
-        numPerBox: 16,
+        expDate: 7,
+        numPerBox: 18,
         storageType: StorageType.refridgereted,
       };
     case ItemType.oneScone:
       return {
-        expDate: null,
-        numPerBox: 16,
+        expDate: 180,
+        numPerBox: 30,
         storageType: StorageType.frozen,
       };
     case ItemType.twoScone:
       return {
-        expDate: null,
+        expDate: 180,
         numPerBox: 16,
         storageType: StorageType.frozen,
       };
     case ItemType.Tart:
       return {
-        expDate: null,
-        numPerBox: 16,
+        expDate: 180,
+        numPerBox: 30,
         storageType: StorageType.frozen,
       };
     case ItemType.chocolateBase:
       return {
-        expDate: 90,
+        expDate: 180,
         numPerBox: 20,
         StorageType: StorageType.frozen,
       };

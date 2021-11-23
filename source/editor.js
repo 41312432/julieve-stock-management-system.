@@ -1,6 +1,6 @@
 "use strict";
 
-import { addInvenToLocalStorage, drawInventoryRow } from "./inventory.js";
+import { addInvenToLocalStorage, drawInventoryRow, getSavedItemInventory, pullItemFromInventory } from "./inventory.js";
 import { saveItemGroupToLocalStorage, drawItemGroupRow, getNowStock, getSavedItemGroupArray, sumOfStock } from "./item.js";
 import { getTypeProperty, getLargeItemType, getRealItemName } from "./type.js";
 
@@ -88,7 +88,7 @@ export class Editor {
     <p>유통기한 : ${this.property.expDate}</p>
     <p>박스당 개수 : ${this.property.numPerBox}</p>
     <p>재고 : ${this.property.nowStaged}</p>
-    <p>창고 : 2박스+14개</p>`;
+    <p>창고 : ${getSavedItemInventory(this.itemType)}</p>`;
   }
 
   addStock = () => {
@@ -98,6 +98,8 @@ export class Editor {
       saveItemGroupToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
       drawItemGroupRow(this.itemType);
       this.container.classList.add("hidden");
+      pullItemFromInventory(this.itemType, this.controlNumber.value);
+      drawInventoryRow(this.itemType);
     }
   };
 

@@ -10,8 +10,7 @@ class Item {
   };
 
   constructor(itemType, amount) {
-    this.now = new Date();
-    this.time = this.now.getTime();
+    this.time = new Date().getTime();
     this.itemType = itemType;
     this.amount = amount;
     this.property = getTypeProperty(itemType);
@@ -20,6 +19,20 @@ class Item {
   setProperty(_property) {
     this.property = _property;
   }
+}
+
+export function makeItemGroupElement(itemGroup) {
+  const itemGroupElement = document.createElement("div");
+  itemGroupElement.classList.add("table-group-item");
+  setExpClass(itemGroupElement, itemGroup);
+  if (itemGroup.amount > 4) {
+    itemGroupElement.appendChild(getStrExpElement(itemGroup.itemType, itemGroup.amount));
+  } else {
+    for (let i = 0; i < itemGroup.amount; i++) {
+      itemGroupElement.appendChild(getIconElement(itemGroup.itemType));
+    }
+  }
+  return itemGroupElement;
 }
 
 export function saveItemGroupToLocalStorage(itemType, amount) {
@@ -39,18 +52,8 @@ export function drawItemGroupRow(itemType) {
   });
 }
 
-export function makeItemGroupElement(itemGroup) {
-  const itemGroupElement = document.createElement("div");
-  itemGroupElement.classList.add("table-group-item");
-  setExpClass(itemGroupElement, itemGroup);
-  if (itemGroup.amount > 4) {
-    itemGroupElement.appendChild(getStrExpElement(itemGroup.itemType, itemGroup.amount));
-  } else {
-    for (let i = 0; i < itemGroup.amount; i++) {
-      itemGroupElement.appendChild(getIconElement(itemGroup.itemType));
-    }
-  }
-  return itemGroupElement;
+export function getSavedItemGroupArray(itemType) {
+  return localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
 }
 
 function setExpClass(element, itemGroup) {
@@ -62,10 +65,6 @@ function setExpClass(element, itemGroup) {
   } else if (dateDiff > itemGroup.property.expDate) {
     element.classList.add("expired");
   }
-}
-
-export function getSavedItemGroupArray(itemType) {
-  return localStorage.getItem(itemType) ? JSON.parse(localStorage.getItem(itemType)) : [];
 }
 
 export function getNowStock(itemType) {
