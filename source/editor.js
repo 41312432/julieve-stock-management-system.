@@ -92,6 +92,10 @@ export class Editor {
   }
 
   addStock = () => {
+    if (this.controlNumber.value > getSavedItemInventory(this.itemType)) {
+      alert("창고에 남은 값보다 작은 정수값을 입력해야 합니다");
+      return;
+    }
     if (this.controlNumber.value <= 0) {
       alert("0보다 큰 정수값을 입력해야 합니다");
     } else {

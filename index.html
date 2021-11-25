@@ -1300,61 +1300,90 @@
           </div>
         </section>
       </div>
-      <!--Editor-->
-      <div class="editor-container hidden">
-        <div class="editor-overlay"></div>
-        <div class="editor-content">
-          <p class="editor-heading">생크림 케이크</p>
-          <section class="editor-section">
-            <div class="editor-section-status"></div>
-            <form class="editor-section-form">
-              <div class="editor-section-number">
-                <input type="number" id="control-number" value="0" min="0" ></input>
-              </div>
-              <div class="editor-section-control-number">
-                  <button class="number-control-button" id="increase"><i class="fas fa-angle-up"></i></button>
-                  <button class="number-control-button" id="decrease"><i class="fas fa-angle-down"></i></button>
-              </div>
-              <div class="editor-section-control-box">
-                <button class="box-control-button" id="box">박스</i></button>
-                <button class="box-control-button" id="reset">리셋</i></button>
-              </div>
-              <div class="editor-section-control-stock">
-                <button class="stock-control-button" id="add">추가</button>
-                <button class="stock-control-button" id="sub">삭제</button>
-              </div>
-              <div class="editor-section-control-inventory hidden">
-                <button class="inventory-control-button" id="inven">물류 추가</button>
-              </div>
-            </div>
-            </form>
-          </section>
-      </div>
     </div>
-  </body>
-  <footer class="footer">
-    <div class="footer-divider"></div>
-    <div class="footer-container">
-      <div>
-        <p>
-          <strong>줄리브 원주혁신도시점</strong><br>
-          050-6769-1967<br>
-          강원도 원주시 반곡동 1886-2 1층 109호 (반곡동, 골든스퀘어1차) 
-        </p>
-        
-      </div>
-      <div>
-        <p>
-          Developed & Designed by <strong>Jo Wansik</strong><br>
-          <i>github@41321432 / jws5327@ajou.ac.kr</i><br>
-          <i><a href="https://github.com/41312432/julieve-stock-management-system.">
-            https://github.com/41312432/julieve-stock-management-system</a></i>
+
+      <!--footer-->
+    <footer class="footer">
+      <div class="footer-divider"></div>
+      <div class="footer-container">
+        <div>
+          <p>
+            <strong>줄리브 원주혁신도시점</strong><br>
+            050-6769-1967<br>
+            강원도 원주시 반곡동 1886-2 1층 109호 (반곡동, 골든스퀘어1차) 
           </p>
+
+        </div>
+        <div>
+          <p>
+            Developed & Designed by <strong>Jo Wansik</strong><br>
+            <i>github@41321432 / jws5327@ajou.ac.kr</i><br>
+            <i><a href="https://github.com/41312432/julieve-stock-management-system.">
+              https://github.com/41312432/julieve-stock-management-system</a></i>
+            </p>
+        </div>
+        <div>
+          <p>© 2021 <i>github@41321432</i><br>
+             Cafe Julieve Wonju </p>
+        </div>
       </div>
-      <div>
-        <p>© 2021 <i>github@41321432</i><br>
-           Cafe Julieve Wonju </p>
-      </div>
+    </footer>
+
+    <!--Editor-->
+    <div class="editor-container hidden">
+      <div class="editor-overlay"></div>
+      <div class="editor-content">
+        <p class="editor-heading">생크림 케이크</p>
+        <section class="editor-section">
+          <div class="editor-section-status"></div>
+          <form class="editor-section-form">
+            <div class="editor-section-control-box">
+              <button class="box-control-button" id="box">박스</i></button>
+              <button class="box-control-button" id="reset">C</i></button>
+            </div>
+            <div class="editor-section-number">
+              <input type="number" id="control-number" value="0" min="0" step="1"></input>
+            </div>
+            <div class="editor-section-control-number">
+                <button class="number-control-button" id="increase"><i class="fas fa-angle-up"></i></button>
+                <button class="number-control-button" id="decrease"><i class="fas fa-angle-down"></i></button>
+            </div>
+            <div class="editor-section-control-stock">
+              <button class="stock-control-button" id="add">
+                <img src="./icon/add.png" alt="">
+              </button>
+              <button class="stock-control-button" id="sub">
+                <img src="./icon/sub.png" alt="">
+              </button>
+            </div>
+            <div class="editor-section-control-inventory hidden">
+                <img class = "inventory-control-button" src="./icon/inven.png" alt="" id="inven">
+            </div>
+          </div>
+          </form>
+        </section>
     </div>
-  </footer>
+
+    <!--ItemGroup-status-->
+    <div class="ItemGroup-status hidden">
+      <div class="status-overlay"></div>
+      <div class="status-content">
+        <p class="status-heading">생크림 케이크</p>
+        <section class="status-section">
+          <form class="status-section-form">
+            <div class="status-section-date">
+              <p>생성 날짜: </p>
+              <input type="number" id="control-number"></input>
+              <button class="status-control-button" id="date"><i class="fas fa-pen"></i></button>
+            </div>
+            <div class="editor-section-amount">
+              <p>현재 개수: </p>
+              <input type="number" id="control-number"></input>
+              <button class="status-control-button" id="amount"><i class="fas fa-pen"></i></button>
+            </div>
+          </form>
+        </section>
+    </div>
+
+  </body>
 </html>
