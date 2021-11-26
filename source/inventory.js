@@ -13,7 +13,7 @@ export function pullItemFromInventory(itemType, amount) {
 }
 
 export function getSavedItemInventory(itemType) {
-  return localStorage.getItem(`${itemType}inventory`) ? localStorage.getItem(`${itemType}inventory`) : 0;
+  return localStorage.getItem(`${itemType}inventory`) ? parseInt(localStorage.getItem(`${itemType}inventory`)) : 0;
 }
 
 export function drawInventoryRow(itemType) {

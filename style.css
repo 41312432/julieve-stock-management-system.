@@ -335,7 +335,7 @@ td {
   padding: 0 15px;
 }
 .editor-section-status p {
-  border-bottom: 3px solid var(--main-darker);
+  border-bottom: 1.5px solid var(--main-darker);
 }
 
 .editor-section-form {
@@ -438,8 +438,12 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: center;
   height: 70%;
   width: 70%;
-  transform: scaleX(-100%);
+  transform: translateX(-30%);
 }
+.inventory-control-button:active {
+  transform: scale(1.1) translateX(-30%);
+}
+
 .editor-section-control-inventory > img {
   border-radius: 30%;
 }

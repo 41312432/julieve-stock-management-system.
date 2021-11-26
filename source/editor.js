@@ -92,7 +92,7 @@ export class Editor {
   }
 
   addStock = () => {
-    if (this.controlNumber.value > getSavedItemInventory(this.itemType)) {
+    if (getSavedItemInventory(this.itemType) && this.controlNumber.value > getSavedItemInventory(this.itemType)) {
       alert("창고에 남은 값보다 작은 정수값을 입력해야 합니다");
       return;
     }
@@ -102,7 +102,9 @@ export class Editor {
       saveItemGroupToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
       drawItemGroupRow(this.itemType);
       this.container.classList.add("hidden");
-      pullItemFromInventory(this.itemType, this.controlNumber.value);
+      if (getSavedItemInventory(this.itemType)) {
+        pullItemFromInventory(this.itemType, this.controlNumber.value);
+      }
       drawInventoryRow(this.itemType);
     }
   };
@@ -135,6 +137,7 @@ export class Editor {
     if (this.controlNumber.value <= 0) {
       alert("0보다 큰 정수값을 입력해야 합니다");
     } else {
+      console.log("Hel");
       addInvenToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
       drawInventoryRow(this.itemType);
       this.container.classList.add("hidden");
