@@ -2,12 +2,11 @@
 
 import { addInvenToLocalStorage, drawInventoryRow, getSavedItemInventory, pullItemFromInventory } from "./inventory.js";
 import { saveItemGroupToLocalStorage, drawItemGroupRow, getNowStock, getSavedItemGroupArray, sumOfStock } from "./item.js";
-import { getTypeProperty, getLargeItemType, getRealItemName } from "./type.js";
+import { getTypeProperty, getRealItemName } from "./type.js";
 
 export class Editor {
   constructor() {
     this.itemType = undefined;
-
     this.property = {
       name: undefined,
       expDate: undefined,
@@ -18,7 +17,9 @@ export class Editor {
 
     this.container = document.querySelector(".editor-container");
     this.overlay = document.querySelector(".editor-overlay");
-    this.overlay.addEventListener("click", this.hideEditor);
+    this.overlay.addEventListener("click", () => {
+      this.container.classList.add("hidden");
+    });
 
     this.forStock = document.querySelector(".editor-section-control-stock");
     this.forInven = document.querySelector(".editor-section-control-inventory");
@@ -28,41 +29,31 @@ export class Editor {
 
     this.form = document.querySelector(".editor-section-form");
     this.controlNumber = document.querySelector("#control-number");
-    this.increaseButton = document.querySelector("#increase");
-    this.decreaseButton = document.querySelector("#decrease");
-
     this.form.addEventListener("submit", (event) => {
       event.preventDefault();
     });
+
+    this.addBoxButton = document.querySelector("#box");
+    this.resetButton = document.querySelector("#reset");
+    this.increaseButton = document.querySelector("#increase");
+    this.decreaseButton = document.querySelector("#decrease");
+    this.addStockButton = document.querySelector("#add");
+    this.subStockButton = document.querySelector("#sub");
+    this.addInventoryButton = document.querySelector("#inven");
+
     this.increaseButton.addEventListener("click", () => {
       this.controlNumber.value = parseInt(this.controlNumber.value) + 1;
     });
     this.decreaseButton.addEventListener("click", () => {
       this.controlNumber.value = parseInt(this.controlNumber.value) - 1;
     });
-
-    this.addStockButton = document.querySelector("#add");
-    this.subStockButton = document.querySelector("#sub");
-
+    this.addBoxButton.addEventListener("click", this.addBox);
+    this.resetButton.addEventListener("click", this.reset);
     this.addStockButton.addEventListener("click", this.addStock);
     this.subStockButton.addEventListener("click", this.subStock);
-
-    this.addInventoryButton = document.querySelector("#inven");
     this.addInventoryButton.addEventListener("click", this.addInven);
-
-    this.addBoxButton = document.querySelector("#box");
-    this.addBoxButton.addEventListener("click", this.addBox);
-
-    this.resetButton = document.querySelector("#reset");
-    this.resetButton.addEventListener("click", this.reset);
-
-    this.addInvenButton = document.querySelector("#inven");
-    this.addInvenButton.addEventListener("click", this.addInven);
   }
 
-  hideEditor = () => {
-    this.container.classList.add("hidden");
-  };
   checkSectionType = (sectionID) => {
     if (sectionID == "section-inventory") {
       this.forInven.classList.remove("hidden");
@@ -92,7 +83,7 @@ export class Editor {
   }
 
   addStock = () => {
-    if (getSavedItemInventory(this.itemType) && this.controlNumber.value > getSavedItemInventory(this.itemType)) {
+    if (this.controlNumber.value > getSavedItemInventory(this.itemType)) {
       alert("창고에 남은 값보다 작은 정수값을 입력해야 합니다");
       return;
     }
@@ -102,9 +93,7 @@ export class Editor {
       saveItemGroupToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
       drawItemGroupRow(this.itemType);
       this.container.classList.add("hidden");
-      if (getSavedItemInventory(this.itemType)) {
-        pullItemFromInventory(this.itemType, this.controlNumber.value);
-      }
+      pullItemFromInventory(this.itemType, this.controlNumber.value);
       drawInventoryRow(this.itemType);
     }
   };
