@@ -1,6 +1,6 @@
 "use strict";
 
-import { addInvenToLocalStorage, drawInventoryRow, getSavedItemInventory, pullItemFromInventory } from "./inventory.js";
+import { addInvenToLocalStorage, drawInventoryRow, getSavedItemInventory, isNoInven, pullItemFromInventory } from "./inventory.js";
 import { saveItemGroupToLocalStorage, drawItemGroupRow, getNowStock, getSavedItemGroupArray, sumOfStock } from "./item.js";
 import { getTypeProperty, getRealItemName } from "./type.js";
 
@@ -83,11 +83,13 @@ export class Editor {
   }
 
   addStock = () => {
-    if (this.controlNumber.value > getSavedItemInventory(this.itemType)) {
+    if (isNoInven(this.itemType)) {
+      saveItemGroupToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
+      drawItemGroupRow(this.itemType);
+      this.container.classList.add("hidden");
+    } else if (this.controlNumber.value > getSavedItemInventory(this.itemType)) {
       alert("창고에 남은 값보다 작은 정수값을 입력해야 합니다");
-      return;
-    }
-    if (this.controlNumber.value <= 0) {
+    } else if (this.controlNumber.value <= 0) {
       alert("0보다 큰 정수값을 입력해야 합니다");
     } else {
       saveItemGroupToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
@@ -126,7 +128,6 @@ export class Editor {
     if (this.controlNumber.value <= 0) {
       alert("0보다 큰 정수값을 입력해야 합니다");
     } else {
-      console.log("Hel");
       addInvenToLocalStorage(this.itemType, parseInt(this.controlNumber.value));
       drawInventoryRow(this.itemType);
       this.container.classList.add("hidden");

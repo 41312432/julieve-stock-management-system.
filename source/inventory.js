@@ -17,7 +17,7 @@ export function getSavedItemInventory(itemType) {
 }
 
 export function drawInventoryRow(itemType) {
-  if (!document.querySelector(`#section-inventory #${itemType} .item-flex-wrap`) || !getSavedItemInventory(itemType)) {
+  if (isNoInven(itemType) || !getSavedItemInventory(itemType)) {
     return;
   }
   const inventoryGroupRow = document.querySelector(`#section-inventory #${itemType} .item-flex-wrap`);
@@ -38,4 +38,8 @@ function makeInvenGroupElement(itemType) {
     }
   }
   return invenGroupElement;
+}
+
+export function isNoInven(itemType) {
+  return !document.querySelector(`#section-inventory #${itemType} .item-flex-wrap`);
 }
