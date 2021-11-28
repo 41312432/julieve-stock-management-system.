@@ -8,6 +8,8 @@ export const ItemType = Object.freeze({
   cheezeCake: "cheezeCake",
   strawberryCake: "strawberryCake",
   //
+  tiramisuCake: "tiramisuCake",
+  //
   Macaron: "Macaron",
   strawberryMacaron: "strawberryMacaron",
   chocolateMacaron: "chocolateMacaron",
@@ -101,6 +103,8 @@ export function getRealItemName(itemType) {
       return "바스크 치즈 케이크";
     case ItemType.strawberryCake:
       return "딸기 케이크";
+    case tiramisuCake:
+      return "티라미스콘";
     case ItemType.strawberryMacaron:
       return "딸기 마카롱";
     case ItemType.chocolateMacaron:
@@ -215,6 +219,8 @@ export function getLargeItemType(itemType) {
     case ItemType.carrotCake:
     case ItemType.strawberryCake:
       return ItemType.sliceCake;
+    case ItemType.tiramisuCake:
+      return ItemType.tiramisuCake;
     case ItemType.strawberryMacaron:
     case ItemType.chocolateMacaron:
     case ItemType.vanillaMacaron:
@@ -293,6 +299,12 @@ export function getTypeProperty(itemType) {
         numPerBox: 5,
         storageType: StorageType.showCased,
       };
+    case ItemType.tiramisuCake:
+      return {
+        expDate: 4,
+        numPerBox: 1,
+        storageType: StorageType.showCased,
+      };
     case ItemType.Macaron:
       return {
         expDate: 10,
@@ -301,8 +313,8 @@ export function getTypeProperty(itemType) {
       };
     case ItemType.milkteaSignature:
       return {
-        expDate: 5,
-        numPerBox: 1,
+        expDate: 4,
+        numPerBox: 4,
         storageType: StorageType.showCased,
       };
     case ItemType.coldbrewBottle:
@@ -313,7 +325,7 @@ export function getTypeProperty(itemType) {
       };
     case ItemType.julieCookie:
       return {
-        expDate: 90,
+        expDate: 180,
         numPerBox: 60,
         storageType: StorageType.showCased,
       };
@@ -326,19 +338,19 @@ export function getTypeProperty(itemType) {
     case ItemType.urbanCookie:
       return {
         expDate: 180,
-        numPerBox: 14,
+        numPerBox: 18,
         storageType: StorageType.refridgereted,
       };
     case ItemType.Lamington:
       return {
         expDate: 5,
-        numPerBox: 18,
+        numPerBox: 15,
         storageType: StorageType.refridgereted,
       };
     case ItemType.Chestnut:
       return {
         expDate: 7,
-        numPerBox: 18,
+        numPerBox: 24,
         storageType: StorageType.refridgereted,
       };
     case ItemType.oneScone:
@@ -356,7 +368,7 @@ export function getTypeProperty(itemType) {
     case ItemType.Tart:
       return {
         expDate: 180,
-        numPerBox: 30,
+        numPerBox: 18,
         storageType: StorageType.frozen,
       };
     case ItemType.chocolateBase:
@@ -368,13 +380,13 @@ export function getTypeProperty(itemType) {
     case ItemType.Madeleine:
       return {
         expDate: 5,
-        numPerBox: 16,
+        numPerBox: 30,
         storageType: StorageType.roomTemperatured,
       };
     case ItemType.Tea:
       return {
-        expDate: 90,
-        numPerBox: 20,
+        expDate: 365,
+        numPerBox: 25,
         storageType: StorageType.roomTemperatured,
       };
   }
