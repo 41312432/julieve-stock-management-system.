@@ -103,7 +103,7 @@ export function getRealItemName(itemType) {
       return "바스크 치즈 케이크";
     case ItemType.strawberryCake:
       return "딸기 케이크";
-    case tiramisuCake:
+    case ItemType.tiramisuCake:
       return "티라미스콘";
     case ItemType.strawberryMacaron:
       return "딸기 마카롱";
